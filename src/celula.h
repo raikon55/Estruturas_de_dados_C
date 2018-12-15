@@ -10,7 +10,6 @@ typedef struct cd dupla;
 typedef struct k key;
 typedef struct d dados;
 
-
 /*
  * Os dados para serem armazenados na celula
  */
