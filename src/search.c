@@ -3,9 +3,8 @@
 TIPO pesquisa_seq(airbnb dado[], int chave, unsigned int tam)
 {
     TIPO resul = -1;
-    int c;
 
-    for(c = 0; c < tam; c++){
+    for(int c = 0; c < tam; c++){
         if(dado[c] == chave){
             resul = dado[c];
             return resul;

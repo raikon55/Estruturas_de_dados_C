@@ -1,7 +1,6 @@
 #ifndef HASH_H_INCLUDED
 #define HASH_H_INCLUDED
 
-#include "celula.h"
 #include "lista.h"
 
 /*
@@ -10,7 +9,7 @@
  * Buscando maneiras de evitar esse trabalho extra
  */
 
-typedef TIPO int;
+typedef int TIPO;
 
 /*
  * Função que cria a hash, recebe um número qualquer e um primo
@@ -26,11 +25,11 @@ void inicializar_hash(lista *tabela[], int mod);
 /*
  * Inserir um elemento na tabela hash
  */
-void inserir_hash(lista *tabela[], TIPO dado, int mod);
+bool inserir_hash(lista *tabela[], TIPO dado, int mod);
 
 /*
  * Pesquisa sequencial na na tabela hash
  */
-airbnb pesquisar_hash(lista *tabela[], int chave, int mod, int *acesso);
+TIPO pesquisar_hash(lista *tabela[], int chave, int mod);
 
 #endif

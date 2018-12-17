@@ -1,31 +1,32 @@
 #include "pilha.h"
 
-void inicializar_pilha(pilha *p){
+void inicializar_pilha(pilha *p)
+{
     p->topo = NULL;     // Sentinela
     p->tam = 0;
 }
 
-short vazia_pilha(pilha *p){
+bool vazia_pilha(pilha *p)
+{
     if(p->topo == NULL) return true;
     else return false;
 }
 
-void empilhar(pilha *p, TIPO dado){
-
+bool empilhar(pilha *p, TIPO dado)
+{
     celula *temp = (celula*)malloc(sizeof(celula)); // Novo sentinela
-    strcpy(temp->word, dado);
+    temp->dado = dado;
     temp->prox = p->topo;
 
     p->topo = temp;     // Atualiza o topo e a sentinela
     p->tam++;
 }
 
-TIPO desempilhar(pilha *p){
+TIPO desempilhar(pilha *p)
+{
+    if(Vazia(p)) return -1;    // Se estiver vazia, retorne
 
-    if(Vazia(p))    // Se estiver vazia, returne
-        return '\0';
-
-    TIPO dado = p->topo->word;  // Remove o dado no topo
+    TIPO dado = p->topo->dado;  // Remove o dado no topo
 
     celula *temp = p->topo;     // Ponteiro para o topo
     p->topo = p->topo->prox;    // Atualiza a proxima celula como topo
@@ -35,19 +36,17 @@ TIPO desempilhar(pilha *p){
     return dado;
 }
 
-
-short pesquisar_pilha(pilha *p, TIPO dado){
+bool pesquisar_pilha(pilha *p, TIPO dado)
+{
     for(celula *temp = p->topo; temp != NULL; temp=temp->prox){
-        if(strstr(temp->word, word)){
-            return true;
-        }
+        if(temp->dado == dado) return true;
     }
 
     return false;
 }
 
-void limpar_pilha(pilha *p){
+void limpar_pilha(pilha *p)
+{
     // Esvazia a pilha
-    while(!Vazia(p))
-        Desempilhar(p);
+    while(!Vazia(p)) Desempilhar(p);
 }

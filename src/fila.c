@@ -8,7 +8,7 @@ void inicializar_fila(fila *f)
     f->tam = 0;
 }
 
-short vazia_fila(fila *f)
+bool vazia_fila(fila *f)
 {
     if(f->inicio == f->fim) return true;
     else return false;
@@ -19,7 +19,7 @@ int tamanho_fila(fila f)
     return f.tam;
 }
 
-void inserir_fila(fila *f, dados dado)
+bool inserir_fila(fila *f, TIPO dado)
 {
     celula *temp = (celula*)malloc( sizeof(celula) );
     if(temp == NULL) return;
@@ -33,7 +33,7 @@ void inserir_fila(fila *f, dados dado)
     f->tam++;
 }
 
-void remover_fila(fila *f)
+bool remover_fila(fila *f)
 {
     if(vazia_fila(f)) return;
 
@@ -46,8 +46,7 @@ void remover_fila(fila *f)
 
 void limpar_fila(fila *f)
 {
-    while(!vazia_fila(f))
-        remover_fila(f);
+    while(!vazia_fila(f)) remover_fila(f);
 
     free(f->inicio);
 }

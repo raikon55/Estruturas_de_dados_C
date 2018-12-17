@@ -1,7 +1,9 @@
 #ifndef FILA_H_INCLUDED
 #define FILA_H_INCLUDED
 
-#include "celula.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 /*
  * Header com a implementação de uma fila em C
@@ -9,12 +11,24 @@
  * Buscando maneiras de evitar esse trabalho extra
  */
 
-typedef TIPO int;
+typedef struct c celula;
+typedef struct f fila;
 
-typedef struct FILA{
+typedef int TIPO;
+
+/*
+ * Celula simples, com ligação apenas para
+ * a próxima celula
+ */
+struct c{
+    TIPO dado;
+    celula *prox;
+};
+
+struct f{
     celula *inicio, *fim;
     int tam;
-}fila;
+};
 
 /*
  * Inicializar a fila com o inicio e fim NULL e
@@ -25,7 +39,7 @@ void inicializar_fila(fila *f);
 /*
  * Verifica se a fila está vazia
  */
-short vazia_fila(fila *f);
+bool vazia_fila(fila *f);
 
 /*
  * Retorna o tamanho da fila
@@ -35,12 +49,12 @@ int tamanho_fila(fila f);
 /*
  * Adiciona um novo elemento ao fim da fila
  */
-void inserir_fila(fila *f, dados dado);
+bool inserir_fila(fila *f, TIPO dado);
 
 /*
  * Remove um elemento do fim da fila
  */
-void remover_fila(fila *f);
+bool remover_fila(fila *f);
 
 /*
  * Deleta a fila

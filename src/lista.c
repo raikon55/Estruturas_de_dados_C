@@ -10,9 +10,9 @@ void inicializar_lista(lista *l)
     l->tam = 0;
 }
 
-short vazia_lista(lista *l)
+bool vazia_lista(lista *l)
 {
-    return(l->inicio == l->fim);
+    return (l->inicio == l->fim);
 }
 
 unsigned int tamanho_lista(lista l)
@@ -20,11 +20,10 @@ unsigned int tamanho_lista(lista l)
     return (l.tam);
 }
 
-short inserir_lista(lista *l, TIPO registro)
+bool inserir_lista(lista *l, TIPO registro)
 {
     dupla *temp = (dupla*) malloc(sizeof(dupla));
-    if(temp == NULL)
-        return false;
+    if(temp == NULL) return false;
 
     temp->registro = registro;
     temp->prox = NULL;
@@ -37,11 +36,11 @@ short inserir_lista(lista *l, TIPO registro)
     return true;
 }
 
-short remover_lista(lista *l, int pos)
+bool remover_lista(lista *l, int pos)
 {
 
     if(pos < 1 || pos > l->tam)
-        return -1;
+        return false;
 
     dupla *CelAnt = l->inicio;
 
@@ -58,25 +57,21 @@ short remover_lista(lista *l, int pos)
     return true;
 }
 
-key pesquisar_lista(lista l, TIPO *chave)
+TIPO pesquisar_lista(lista l, TIPO chave)
 {
     dupla *temp = l.inicio->prox;
 
-    while( !vazia_lista(&l) && strcmp(chave, temp->registro.dado.frase) != 0 )
+    while(!vazia_lista(&l) && chave != temp->dado)
         temp = temp->prox;
 
-    if(temp != NULL){
-        return temp->registro;
-    }else{
-        key invalido;
-        strcpy(invalido.dado.frase, "Não encontrado");
-        return invalido;
-    }
+    if(temp != NULL) return temp->dado;
+    else return -1;
+
 }
 
 void limpar_lista(lista *l)
 {
-    while( tamanho_lista(*l) != 0)
+    while(tamanho_lista(*l) != 0)
         remover_lista(l, 1);
 }
 

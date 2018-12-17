@@ -1,12 +1,22 @@
 #ifndef ARVBIN_H_INCLUDED
 #define ARVBIN_H_INCLUDED
 
-#include "celula.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
-typedef struct btree{
+typedef struct n node;
+typedef struct btree ArvBin;
+
+struct n{
+    int dado;
+    No *pai, *esq, *dir;
+};
+
+struct btree{
     node *raiz;
     int tam;
-}ArvBin;
+};
 
 /*
  * Inicializa a árvore com o nó raiz e tamanho 0
@@ -17,7 +27,7 @@ void inicializar_arvore(ArvBin *arvore);
  * Insere um novo nó, seguindo os requisitos da estrutura
  * da árvore
  */
-void inserir_arvore(ArvBin *arvore, int dado);
+bool inserir_arvore(ArvBin *arvore, int dado);
 
 /*
  * Mostrar os elementos da árvore InOrder
@@ -37,13 +47,7 @@ void pos_ord(node *node);
 /*
  * Pesquisar elemento na árvore
  */
-int pesquisar_arvore(ArvBin *arvore, int chave, int &cont);
-
-/*
- * Retorna a altura da árvore
- * A altura da aŕvore é diferente do tamanho da mesma
- */
-int altura_arvore(node *node);
+int pesquisar_arvore(ArvBin *arvore, int chave);
 
 /*
  * Exibe o pai do nó passado como parâmetro

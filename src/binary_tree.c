@@ -1,12 +1,13 @@
 #include "bynary_tree.h"
 
-void inicializar_arvore(ArvBin *arvore){
+void inicializar_arvore(ArvBin *arvore)
+{
     arvore->raiz = NULL;
     arvore->tam = 0;
 }
 
-void inserir_arvore(ArvBin *arvore, int dado){
-
+bool inserir_arvore(ArvBin *arvore, TIPO dado)
+{
     node *temp = (node*)malloc(sizeof(node)); // Criar um novo nó
     temp->dado = dado;
     temp->pai = temp->esq = temp->dir = NULL;
@@ -46,7 +47,8 @@ void inserir_arvore(ArvBin *arvore, int dado){
     }
 }
 
-void in_ord(node *node){
+void in_ord(node *node)
+{
     if(node != NULL){
         printf("%i ", node->dado);
         ImprimirEmOrdem(node->esq);
@@ -54,7 +56,8 @@ void in_ord(node *node){
     }
 }
 
-void pre_ord(node *node){
+void pre_ord(node *node)
+{
     if(node != NULL){
         ImprimirPreOrdem(node->esq);
         printf("%i ", node->dado);
@@ -62,7 +65,8 @@ void pre_ord(node *node){
     }
 }
 
-void pos_ord(node *node){
+void pos_ord(node *node)
+{
     if(node != NULL){
         ImprimirPosOrdem(node->dir);
         printf("%i ", node->dado);
@@ -71,45 +75,31 @@ void pos_ord(node *node){
     }
 }
 
-int pesquisar_arvore(ArvBin *arvore, int chave,
-              int &cont){
-    cont = 0;
+int pesquisar_arvore(ArvBin *arvore, int chave)
+{
     node *temp = arvore->raiz;
     while(temp!=NULL){
-
-        cont++;
 
         if(temp->dado == chave){
             return temp->dado;
         }else{
-
-            if(chave < temp->dado)
-                temp = temp->esq;
-            else
-                temp = temp->dir;
+            if(chave < temp->dado) temp = temp->esq;
+            else temp = temp->dir;
         }
     }
     return -1;
 }
 
-int altura_arvore(node *node){
+int antecessor_node(node *node)
+{
 
-    if(node == NULL)
-        return 0;
-
-    return 1 + std::max(Altura(node->esq),
-                        Altura(node->dir));
-}
-
-int antecessor_node(node *node){
-
-    if(node->dir == NULL)
-        return node->dado;
+    if(node->dir == NULL) return node->dado;
 
     return Antecessor(node->dir);
 }
 
-bool remover_arvore(ArvBin *arvore, int chave){
+bool remover_arvore(ArvBin *arvore, int chave)
+{
 
     node *temp = arvore->raiz;
 

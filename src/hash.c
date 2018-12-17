@@ -13,16 +13,16 @@ void inicializar_hash(lista *tabela[], int mod)
     }
 }
 
-void inserir_hash(lista *tabela[], TIPO dado, int mod)
+bool inserir_hash(lista *tabela[], TIPO dado, int mod)
 {
     int pos = hash(dado, mod);
     inserir_lista(tabela[pos], dado);
 }
 
-airbnb pesquisar_hash(lista *tabela[], int chave, int mod, int *acesso)
+TIPO pesquisar_hash(lista *tabela[], int chave, int mod)
 {
     int pos = hash(chave, mod);
-    TIPO consulta = pesquisar_lista(tabela[pos], chave, acesso);
+    TIPO consulta = pesquisar_lista(tabela[pos], chave);
 
     if(consulta != -1) return consulta;
     else return -1;

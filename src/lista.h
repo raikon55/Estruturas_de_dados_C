@@ -1,7 +1,9 @@
 #ifndef LISTA_H_INCLUDED
 #define LISTA_H_INCLUDED
 
-#include "celula.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 /*
  * Header com a implementação de uma lista duplamente encadeada em C
@@ -9,9 +11,21 @@
  * Buscando maneiras de evitar esse trabalho extra
  */
 
+typedef struct cd dupla;
+typedef struct l lista;
+
 typedef TIPO int;
 
-typedef struct LISTA{
+/*
+ * Celula dupla, ligação para a próxima e
+ * para a anterior
+ */
+struct cd{
+    key registro;
+    dupla *ant, *prox;
+};
+
+struct l{
     dupla *inicio, *fim;
     unsigned short tam;
 }lista;
@@ -26,7 +40,7 @@ void inicializar_lista(lista *l);
 /*
  * Confere se a lista está vazia,
  */
-short vazia_lista(lista *l);
+bool vazia_lista(lista *l);
 
 /*
  * Retorna o tamanho da lista
@@ -36,17 +50,17 @@ unsigned int tamanho_lista(lista l);
 /*
  * Insere um novo elemento ao FINAL da lista
  */
-short inserir_lista(lista *l, key registro);
+bool inserir_lista(lista *l, key registro);
 
 /*
  * Remove um elemento na POS-ésima posição
  */
-short remover_lista(lista *l, int pos);
+bool remover_lista(lista *l, int pos);
 
 /*
  * Pesquisa um elemento na lista, a partir da chave
  */
-key pesquisar_lista(lista l, char *chave);
+TIPO pesquisar_lista(lista l, TIPO chave);
 
 /*
  * Limpa a lista e zera o tamanho
