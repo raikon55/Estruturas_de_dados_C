@@ -54,7 +54,7 @@ bool inserir_fila(fila *f, TIPO dado);
 /*
  * Remove um elemento do fim da fila
  */
-bool remover_fila(fila *f);
+TIPO remover_fila(fila *f);
 
 /*
  * Deleta a fila

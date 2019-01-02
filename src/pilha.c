@@ -12,19 +12,28 @@ bool vazia_pilha(pilha *p)
     else return false;
 }
 
+int tamanho_pilha(pilha p)
+{
+    return p.tam;
+}
+
 bool empilhar(pilha *p, TIPO dado)
 {
     celula *temp = (celula*)malloc(sizeof(celula)); // Novo sentinela
+    if(temp == NULL) return false;
+
     temp->dado = dado;
     temp->prox = p->topo;
 
     p->topo = temp;     // Atualiza o topo e a sentinela
     p->tam++;
+
+    return true;
 }
 
 TIPO desempilhar(pilha *p)
 {
-    if(Vazia(p)) return -1;    // Se estiver vazia, retorne
+    if(vazia_pilha(p)) return -1;    // Se estiver vazia, retorne
 
     TIPO dado = p->topo->dado;  // Remove o dado no topo
 
@@ -36,17 +45,8 @@ TIPO desempilhar(pilha *p)
     return dado;
 }
 
-bool pesquisar_pilha(pilha *p, TIPO dado)
-{
-    for(celula *temp = p->topo; temp != NULL; temp=temp->prox){
-        if(temp->dado == dado) return true;
-    }
-
-    return false;
-}
-
 void limpar_pilha(pilha *p)
 {
     // Esvazia a pilha
-    while(!Vazia(p)) Desempilhar(p);
+    while(!vazia_pilha(p)) desempilhar(p);
 }

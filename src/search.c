@@ -1,6 +1,6 @@
 #include "search.h"
 
-TIPO pesquisa_seq(airbnb dado[], int chave, unsigned int tam)
+TIPO pesquisa_seq(TIPO dado[], int chave, unsigned int tam)
 {
     TIPO resul = -1;
 
@@ -14,7 +14,7 @@ TIPO pesquisa_seq(airbnb dado[], int chave, unsigned int tam)
     return resul;
 }
 
-TIPO pesquisa_bin(airbnb dado[], int chave, unsigned int tam)
+TIPO pesquisa_bin(TIPO dado[], int chave, unsigned int tam)
 {
     int inicio = 0, fim = (tam - 1), meio;
     TIPO resul = -1;
