@@ -1,6 +1,10 @@
 #ifndef PILHA_H_INCLUDED
 #define PILHA_H_INCLUDED
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+
 /*
  * Header com a implementação de uma pilha em C
  * Deve ser modificado para cada tipo de dado
@@ -38,6 +42,11 @@ void inicializar_pilha(pilha *p);
 bool vazia_pilha(pilha *p);
 
 /*
+ * Retorna o tamanho da fila
+ */
+int tamanho_pilha(pilha p);
+
+/*
  * Adiciona um novo elemento ao topo da pilha
  */
 bool empilhar(pilha *p, TIPO dado);
@@ -46,11 +55,6 @@ bool empilhar(pilha *p, TIPO dado);
  * Remove um novo elemento do topo da pilha
  */
 TIPO desempilhar(pilha *p);
-
-/*
- * Imprimir os dados da pilha
- */
-bool pesquisar_pilha(pilha *p, TIPO dado);
 
 /*
  * Deleta a pilha

@@ -1,7 +1,7 @@
 #ifndef SEARCH_H_INCLUDED
 #define SEARCH_H_INCLUDED
 
-#include "celula.h"
+typedef int TIPO;
 
 /*
  * Pesquisa sequencial realizada em vetor
