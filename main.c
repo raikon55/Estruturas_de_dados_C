@@ -66,6 +66,7 @@ void exemplo_pesquisa(){
 }
 */
 
+/*
 void exemplo_lista()
 {
     lista exemplo;
@@ -82,12 +83,12 @@ void exemplo_lista()
 
     limpar_lista(&exemplo);
 }
+*/
 
 int main(void)
 {
     //exemplo_fila();
     //exemplo_pilha();
-    //exemplo_
     //exemplo_pesquisa();
     //exemplo_lista();
     return 0;

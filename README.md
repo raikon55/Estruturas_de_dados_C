@@ -58,7 +58,7 @@ _Material sobre hashes_
 
 **[Árvore binária](https://github.com/raikon55/Estruturas_de_dados_C/blob/master/src/binary_tree.h)**
 
-["Em ciência da computação, a árvore de busca binária ou árvore de pesquisa binária é uma árvore binária onde todos os nós são valores, todo nó a esquerda contêm uma sub-árvore com os valores menores ao nó raiz da sub-árvore e todos os nós da sub-árvore a direita contêm somente valores maiores ao nó raiz. Os valores são relevantes na árvore de busca binária. O objetivo desta árvore é estruturar os dados de forma flexível permitindo pesquisa binária"](https://www.ft.unicamp.br/liag/siteEd/definicao/arvore-binaria.php)
+"Em ciência da computação, a árvore de busca binária ou árvore de pesquisa binária é uma árvore binária onde todos os nós são valores, todo nó a esquerda contêm uma sub-árvore com os valores menores ao nó raiz da sub-árvore e todos os nós da sub-árvore a direita contêm somente valores maiores ao nó raiz. Os valores são relevantes na árvore de busca binária. O objetivo desta árvore é estruturar os dados de forma flexível permitindo pesquisa binária" [¹](https://www.ft.unicamp.br/liag/siteEd/definicao/arvore-binaria.php)
 
 _Material sobre árvores binárias_
 
