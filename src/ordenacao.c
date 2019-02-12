@@ -1,4 +1,6 @@
-void bolha(int* a, int tamanho)
+#include "ordenacao.h"
+
+void bolha(int* vet, int tamanho)
 {
     int tmp;
 
@@ -6,66 +8,66 @@ void bolha(int* a, int tamanho)
 
         for(int j = i+1; j < tamanho; j++){
 
-            if(a[j].room_id < a[i].room_id){
-                tmp = a[i];
-                a[i] = a[j];
-                a[j] = tmp;
+            if(vet[j] < vet[i]){
+                tmp = vet[i];
+                vet[i] = vet[j];
+                vet[j] = tmp;
             }
         }
     }
 }
 
-void insercao(int* a, int tamanho)
+void insercao(int* vet, int tamanho)
 {
-    int tmp;
+    int i, j, tmp;
 
-    for(int i = 1; i < tamanho; i++){
-        tmp = a[i];
+    for(i = 1; i < tamanho; i++){
+        tmp = vet[i];
 
-        for(int j = i-1; j >= 0 && tmp.room_id < a[j].room_id; j--)
-            a[j+1] = a[j];
+        for(j = i-1; j >= 0 && tmp < vet[j]; j--){}
+            vet[j+1] = vet[j];
 
-        a[j+1] = tmp;
+        vet[j+1] = tmp;
     }
 }
 
-void quick(int* a, int esquerda, int direita)
+void quick(int* vet, int esquerda, int direita)
 {
     int i, j, pivo, temp;
 
     i = esquerda;
     j = direita;
-    pivo = a[(esquerda + direita) / 2];
+    pivo = vet[(esquerda + direita) / 2];
 
     while(i <= j) {
-        while(a[i].room_id < pivo.room_id && i < direita) {
+        while(vet[i] < pivo && i < direita) {
             i++;
         }
 
-        while(a[j].room_id > pivo.room_id && j > esquerda) {
+        while(vet[j] > pivo && j > esquerda) {
             j--;
         }
 
         if(i <= j) {
-            temp = a[i];
-            a[i] = a[j];
-            a[j] = temp;
+            temp = vet[i];
+            vet[i] = vet[j];
+            vet[j] = temp;
             i++;
             j--;
         }
     }
 
     if(j > esquerda) {
-        quick(a, esquerda, j);
+        quick(vet, esquerda, j);
     }
 
     if(i < direita) {
-        quick(a, i, direita);
+        quick(vet, i, direita);
     }
 
 }
 
-void selecao(int n, int* a)
+void selecao(int* vet, int n)
 {
    int i, j, min, x;
 
@@ -73,27 +75,27 @@ void selecao(int n, int* a)
         min = i;
 
         for (j = i+1; j < n; j++)
-            if (a[j].room_id < a[min].room_id)
+            if (vet[j] < vet[min])
                 min = j;
 
-        x = a[i];
-        a[i] = a[min];
-        a[min] = x;
+        x = vet[i];
+        vet[i] = vet[min];
+        vet[min] = x;
     }
 
 }
 
-void  merge(int* a, int inicio, int fim)
+void  merge(int* vet, int inicio, int fim)
 {
     if(inicio < fim){
         int meio = (inicio + fim) / 2;
-        merge(a, inicio, meio);
-        merge(a, meio + 1, fim);
-        merging(a, inicio, meio, fim);
+        merge(vet, inicio, meio);
+        merge(vet, meio + 1, fim);
+        merging(vet, inicio, meio, fim);
     }
 }
 
-void merging(int* a, int inicio, int meio, int fim)
+void merging(int* vet, int inicio, int meio, int fim)
 {
     int n1, n2, i, j, k;
     n1 = meio - inicio + 1;
@@ -103,21 +105,22 @@ void merging(int* a, int inicio, int meio, int fim)
     int *vet2 = (int*)calloc( n2+1, sizeof(int) );
 
     for(i = 0; i < n1; i++)
-        vet1[i] = a[inicio+i];
+        vet1[i] = vet[inicio+i];
+    
     for(j=0; j < n2; j++)
-        vet2[j] = a[meio+j+1];
+        vet2[j] = vet[meio+j+1];
 
-    vet1[i].room_id = INT_MAX;
-    vet2[j].room_id = INT_MAX;
+    vet1[i] = INT_MAX;
+    vet2[j] = INT_MAX;
 
     i = 0;
     j = 0;
 
     for(k = inicio; k <= fim; k++){
-        if(vet1[i].room_id <= vet2[j].room_id)
-            a[k] = vet1[i++];
+        if(vet1[i] <= vet2[j])
+            vet[k] = vet1[i++];
         else
-            a[k] = vet2[j++];
+            vet[k] = vet2[j++];
     }
 
     free(vet1);

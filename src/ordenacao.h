@@ -4,17 +4,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 
-void bolha(int* a, int tamanho);
+void bolha(int* vet, int tamanho);
 
-void insercao(int* a, int tamanho);
+void insercao(int* vet, int tamanho);
 
-void quick(int* a, int esquerda, int direita);
+void quick(int* vet, int esquerda, int direita);
 
-void selecao(int n, int* a);
+void selecao(int* vet, int n);
 
-void  merge(int* a, int inicio, int fim);
+void merge(int* vet, int inicio, int fim);
 
-void merging(int* a, int inicio, int meio, int fim);
+void merging(int* vet, int inicio, int meio, int fim);
 
 #endif
