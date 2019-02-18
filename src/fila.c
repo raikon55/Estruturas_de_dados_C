@@ -21,14 +21,11 @@ int tamanho_fila(fila f)
 
 bool inserir_fila(fila *f, TIPO dado)
 {
-    celula *temp = (celula*)malloc( sizeof(celula) );
-    if(temp == NULL) return false;
+    f->fim->prox = (celula*) malloc(sizeof(celula));
 
-    temp->dado = dado;
-    temp->prox = NULL;
-
-    f->fim->prox = temp;
-    f->fim = temp;
+    f->fim = f->fim->prox;
+    f->fim->dado = dado;
+    f->fim->prox = NULL;
     f->tam++;
 
     return true;
@@ -36,7 +33,7 @@ bool inserir_fila(fila *f, TIPO dado)
 
 TIPO remover_fila(fila *f)
 {
-    if(vazia_fila(f)) return NULL;
+    if (vazia_fila(f)) return (TIPO)NULL;
 
     celula *temp = f->inicio;
     f->inicio = f->inicio->prox;

@@ -3,17 +3,16 @@
 void inicializar_lista(lista *l)
 {
     l->inicio = (dupla*)malloc(sizeof(dupla));
-    l->fim = (dupla*)malloc(sizeof(dupla));
 
-    l->inicio->prox = l->inicio->ant = NULL; // Prox e ant vazias
     l->fim = l->inicio;                // Inicio e fim apontam para o mesmo lugar
+    l->inicio->prox = l->inicio->ant = NULL; // Prox e ant vazias
 
     l->tam = 0;
 }
 
 bool vazia_lista(lista *l)
 {
-    if(tamanho_lista(*l) != 0) return true;
+    if(l->inicio == l->fim) return true;
     else return false;
 }
 

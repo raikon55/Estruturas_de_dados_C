@@ -1,7 +1,7 @@
-//#include "src/fila.h"
+#include "src/fila.h"
 //#include "src/pilha.h"
 //#include "src/search.h"
-#include "src/lista.h"
+//#include "src/lista.h"
 
 /*
 void exemplo_fila()
@@ -25,7 +25,9 @@ void exemplo_fila()
     printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_fila(exemplo));
 
     // Mostrar os dados e limpar a fila
-    while(tamanho_fila(exemplo) != 0) printf("Removido %i\n", remover_fila(&exemplo));
+    while(tamanho_fila(exemplo) != 0) { TIPO dado = remover_fila(&exemplo); printf("Removido %i\n", dado); }
+    vazia = vazia_fila(&exemplo);
+    printf("Vazia? %i\n", vazia);
     limpar_fila(&exemplo);
 }
 */
@@ -87,7 +89,7 @@ void exemplo_lista()
 
 int main(void)
 {
-    //exemplo_fila();
+    exemplo_fila();
     //exemplo_pilha();
     //exemplo_pesquisa();
     //exemplo_lista();
