@@ -1,7 +1,7 @@
 #ifndef HASH_H_INCLUDED
 #define HASH_H_INCLUDED
 
-#include "lista.h"
+#include "Lista.h"
 
 /*
  * Header com a implementação da tabela hash em C
@@ -20,16 +20,16 @@ int hash(int num, int mod);
 /*
  * Iniciar o vetor de listas, usadas para tratar colisões
  */
-void inicializar_hash(lista *tabela[], int mod);
+void inicializar_hash(Lista *tabela[], int mod);
 
 /*
  * Inserir um elemento na tabela hash
  */
-bool inserir_hash(lista *tabela[], TIPO dado, int mod);
+void inserir_hash(Lista *tabela[], TIPO dado, int mod);
 
 /*
  * Pesquisa sequencial na na tabela hash
  */
-TIPO pesquisar_hash(lista *tabela[], int chave, int mod);
+TIPO pesquisar_hash(Lista *tabela[], int chave, int mod);
 
 #endif

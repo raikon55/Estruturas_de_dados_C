@@ -23,55 +23,41 @@ int** iniciar_matriz(int dimensao)
     return matriz;
 }
 
-Grafo* iniciar_grafo(int vert)
+Grafo* iniciar_matriz_adjacente(int vertices)
 {
     Grafo *graph = (Grafo*) malloc(sizeof(Grafo));
 
-    graph->vertice = vert;
+    graph->vertice = vertices;
     graph->aresta = 0;
-    graph->matriz = iniciar_matriz(vert);
+    graph->matriz = iniciar_matriz(vertices);
 
     if (graph->matriz != NULL) return graph;
     else return NULL;
 }
 
-void criar_aresta(Grafo *graph, int vert1, int vert2)
+void criar_aresta_matriz(Grafo *graph, int vert1, int vert2)
 {
     if (graph->matriz[vert1][vert2] == 0){
         graph->matriz[vert1][vert2] = 1;
+        graph->matriz[vert2][vert1] = 1;
         graph->aresta++;
     }else{
         puts("Erro na criação da aresta");
     }
 }
 
-void remove_aresta(Grafo *graph, int vert1, int vert2)
+void remove_aresta_matriz(Grafo *graph, int vert1, int vert2)
 {
     if (graph->matriz[vert1][vert2] == 1){
         graph->matriz[vert1][vert2] = 0;
+        graph->matriz[vert2][vert1] = 0;
         graph->aresta--;
     }else{
         puts("Erro na remoção da aresta");
     }
 }
 
-void show(Grafo *graph)
-{
-    printf("   ");
-    for (int i = 0; i < graph->vertice; i++)
-        printf("%i: ", i);
-    puts("");
-
-    for (int i = 0; i < graph->vertice; i++){
-        printf("%i: ", i);
-        for (int j = 0; j < graph->vertice; j++){
-            printf("%i  ", graph->matriz[i][j]);
-        }
-        puts("");
-    }
-}
-
-void finalizar_grafo(Grafo *graph)
+void finalizar_matriz_adjacente(Grafo *graph)
 {
     for (int i = 0; i < graph->vertice; i++)
         free(graph->matriz[i]);

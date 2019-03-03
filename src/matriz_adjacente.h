@@ -6,7 +6,7 @@
 
 typedef struct g Grafo;
 
-/**
+/*
  * Struct pra guardar o total de vértices, arestas e
  * alocar a matriz
  */
@@ -17,44 +17,30 @@ struct g {
 };
 
 /*
- * Criar matriz a ser usada
- * @dimensão: Matrizes adjacentes tem dimensão VxV
+ * Cria uma matriz VxV, para ser possível
+ * ligar todos os vértices, se necessário.
  */
 int** iniciar_matriz(int dimensao);
 
 /*
- * Iniciar a matriz de adjacencia com um
- * grafo de vert vértices
- * @vert: Número total de vértices
+ * Distribui todos os vértices pela matriz,
+ * O grafo representado é não direcionado.
  */
-Grafo* iniciar_grafo(int vert);
+Grafo* iniciar_matriz_adjacente(int vertices);
 
 /*
- * Criar uma aresta entre 2 vértices
- * @graph: struct contento as informações do grafo
- * @vert1: vértice inicial
- * @vert2: vértice final
+ * Criar uma aresta entre 2 vértices.
  */
-void criar_aresta(Grafo *graph, int vert1, int vert2);
+void criar_aresta_matriz(Grafo *graph, int vert1, int vert2);
 
 /*
  * Remover uma aresta
- * @graph: struct contento a matriz de adjacencia
- * @vert1: vértice inicial
- * @vert2: vértice final
  */
-void remove_aresta(Grafo *graph, int vert1, int vert2);
-
-/*
- * Mostrar o grafo
- * @graph: struct contento as informações do grafo
- */
-void show(Grafo *graph);
+void remove_aresta_matriz(Grafo *graph, int vert1, int vert2);
 
 /*
  * Deletar grafo
- * @graph: struct contento as informações do grafo
  */
-void finalizar_grafo(Grafo *graph);
+void finalizar_matriz_adjacente(Grafo *graph);
 
 #endif /* MATRIZ_ADJACENTE_H_ */

@@ -5,21 +5,21 @@ int hash(int num, int mod)
     return num % mod;
 }
 
-void inicializar_hash(lista *tabela[], int mod)
+void inicializar_hash(Lista *tabela[], int mod)
 {
     for(int i = 0; i < mod; i++){
-        tabela[i] = (lista*)malloc( sizeof(lista) );
+        tabela[i] = (Lista*)malloc( sizeof(Lista) );
         inicializar_lista(tabela[i]);
     }
 }
 
-bool inserir_hash(lista *tabela[], TIPO dado, int mod)
+void inserir_hash(Lista *tabela[], TIPO dado, int mod)
 {
     int pos = hash(dado, mod);
     inserir_lista(tabela[pos], dado);
 }
 
-TIPO pesquisar_hash(lista *tabela[], int chave, int mod)
+TIPO pesquisar_hash(Lista *tabela[], int chave, int mod)
 {
     int pos = hash(chave, mod);
     TIPO consulta = pesquisar_lista(tabela[pos], chave);

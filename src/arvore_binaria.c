@@ -1,4 +1,4 @@
-#include "bynary_tree.h"
+#include "arvore_binaria.h"
 
 void inicializar_arvore(ArvBin *arvore)
 {
@@ -8,76 +8,80 @@ void inicializar_arvore(ArvBin *arvore)
 
 bool inserir_arvore(ArvBin *arvore, TIPO dado)
 {
-    node *temp = (node*)malloc(sizeof(node)); // Criar um novo nó
+    Node *temp = (Node*)malloc(sizeof(Node)); // Criar um novo nó
     temp->dado = dado;
     temp->pai = temp->esq = temp->dir = NULL;
 
     //Buscar o local onde inserir o novo nó
-    if(arvore->raiz == NULL){
+    if (arvore->raiz == NULL) {
         arvore->raiz = temp;
         arvore->tam++;
-    }else{
-        node *raiz = arvore->raiz;
+    } else {
+        Node *raiz = arvore->raiz;
 
-        while(raiz!=NULL){
+        while (raiz!=NULL) {
 
-            if(dado < raiz->dado){
-                if(raiz->esq == NULL){
+            if (dado < raiz->dado) {
+
+                if (raiz->esq == NULL) {
                     raiz->esq = temp;
                     temp->pai = raiz;
                     arvore->tam++;
                     return true;
-                }else
-                    raiz = raiz->esq;
-            }
-            else if(dado > raiz->dado){
-                if(raiz->dir == NULL){
+
+                } else raiz = raiz->esq;
+
+            } else if (dado > raiz->dado) {
+
+                if (raiz->dir == NULL) {
                     raiz->dir = temp;
                     temp->pai = raiz;
                     arvore->tam++;
                     return true;
-                }else
-                    raiz = raiz->dir;
-            }
-            else{
+
+                } else raiz = raiz->dir;
+
+            } else {
                 free(temp);
                 return false;
             }
         }
     }
+
+    return true;
 }
 
-void in_ord(node *node)
+void in_ord(Node *node)
 {
     if(node != NULL){
         printf("%i ", node->dado);
-        ImprimirEmOrdem(node->esq);
-        ImprimirEmOrdem(node->dir);
+        in_ord(node->esq);
+        in_ord(node->dir);
     }
 }
 
-void pre_ord(node *node)
+void pre_ord(Node *node)
 {
     if(node != NULL){
-        ImprimirPreOrdem(node->esq);
+        pre_ord(node->esq);
         printf("%i ", node->dado);
-        ImprimirPreOrdem(node->dir);
+        pre_ord(node->dir);
     }
 }
 
-void pos_ord(node *node)
+void pos_ord(Node *node)
 {
     if(node != NULL){
-        ImprimirPosOrdem(node->dir);
+        pos_ord(node->dir);
         printf("%i ", node->dado);
-        ImprimirPosOrdem(node->esq);
+        pos_ord(node->esq);
 
     }
 }
 
 int pesquisar_arvore(ArvBin *arvore, int chave)
 {
-    node *temp = arvore->raiz;
+    Node *temp = arvore->raiz;
     while(temp!=NULL){
 
         if(temp->dado == chave){
@@ -90,18 +94,17 @@ int pesquisar_arvore(ArvBin *arvore, int chave)
     return -1;
 }
 
-int antecessor_node(node *node)
+int antecessor_Node(Node *node)
 {
 
     if(node->dir == NULL) return node->dado;
 
-    return Antecessor(node->dir);
+    return antecessor_Node(node->dir);
 }
 
 bool remover_arvore(ArvBin *arvore, int chave)
 {
-
-    node *temp = arvore->raiz;
+    Node *temp = arvore->raiz;
 
     // LOCALIZA O ELEMENTO A SER EXCLUIDO
     while(temp != NULL){
@@ -119,7 +122,7 @@ bool remover_arvore(ArvBin *arvore, int chave)
 
         // CASO 1 - REMOVER FOLHA
         if(temp->esq == NULL && temp->dir == NULL){
-            node *pai = temp->pai;
+            Node *pai = temp->pai;
 
             if(pai == NULL)
                 arvore->raiz = NULL;
@@ -133,10 +136,10 @@ bool remover_arvore(ArvBin *arvore, int chave)
             return true;
         }else
 
-        // CASO 2 - REMOVER node COM UM FILHO
+        // CASO 2 - REMOVER Node COM UM FILHO
         if(temp->esq == NULL || temp->dir == NULL){
 
-            node* pai = temp->pai;
+            Node* pai = temp->pai;
 
             if(temp->esq!=NULL){
                 if(pai == NULL){
@@ -172,13 +175,14 @@ bool remover_arvore(ArvBin *arvore, int chave)
                 return true;
             }
 
-        }else{ // CASO 3 - node COM 2 FILHOS
+        }else{ // CASO 3 - Node COM 2 FILHOS
 
-            int Ant = Antecessor(temp->esq);
+            int Ant = antecessor_Node(temp->esq);
             // REMOVER O ELEMENTO ANTECESSOR
-            Remover(arvore,Ant);
+            remover_arvore(arvore,Ant);
             temp->dado = Ant;
 
         }
     }
+    return false;
 }
