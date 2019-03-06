@@ -1,4 +1,4 @@
-#include "lista_adjcencia.h"
+#include "lista_adjcente.h"
 
 Grafo* iniciar_grafo(int verts)
 {

@@ -1,7 +1,7 @@
 #ifndef HASH_H_INCLUDED
 #define HASH_H_INCLUDED
 
-#include "Lista.h"
+#include "lista.h"
 
 /*
  * Header com a implementação da tabela hash em C

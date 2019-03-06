@@ -1,4 +1,4 @@
-#include "Pilha.h"
+#include "pilha.h"
 
 void inicializar_pilha(Pilha *p)
 {
