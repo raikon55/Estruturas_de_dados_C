@@ -1,44 +1,41 @@
 #include "fila.h"
 
-void inicializar_fila(fila *f)
+void inicializar_fila(Fila *f)
 {
-    f->inicio = (celula*)malloc( sizeof(celula) );
+    f->inicio = (Celula*)malloc( sizeof(Celula) );
     f->inicio->prox = NULL;
     f->fim = f->inicio;
     f->tam = 0;
 }
 
-bool vazia_fila(fila *f)
+bool vazia_fila(Fila *f)
 {
     if(f->inicio == f->fim) return true;
     else return false;
 }
 
-int tamanho_fila(fila f)
+int tamanho_fila(Fila f)
 {
     return f.tam;
 }
 
-bool inserir_fila(fila *f, TIPO dado)
+bool enfileirar(Fila *f, TIPO dado)
 {
-    celula *temp = (celula*)malloc( sizeof(celula) );
-    if(temp == NULL) return false;
+    f->fim->prox = (Celula*) malloc(sizeof(Celula));
 
-    temp->dado = dado;
-    temp->prox = NULL;
-
-    f->fim->prox = temp;
-    f->fim = temp;
+    f->fim = f->fim->prox;
+    f->fim->dado = dado;
+    f->fim->prox = NULL;
     f->tam++;
 
     return true;
 }
 
-TIPO remover_fila(fila *f)
+TIPO desenfileirar(Fila *f)
 {
-    if(vazia_fila(f)) return NULL;
+    if (vazia_fila(f)) return (TIPO)NULL;
 
-    celula *temp = f->inicio;
+    Celula *temp = f->inicio;
     f->inicio = f->inicio->prox;
 
     TIPO dado = temp->dado;
@@ -48,9 +45,9 @@ TIPO remover_fila(fila *f)
     return dado;
 }
 
-void limpar_fila(fila *f)
+void limpar_fila(Fila *f)
 {
-    while(!vazia_fila(f)) remover_fila(f);
+    while(!vazia_fila(f)) desenfileirar(f);
 
     free(f->inicio);
 }

@@ -1,4 +1,4 @@
-#include "search.h"
+#include "busca.h"
 
 TIPO pesquisa_seq(TIPO dado[], int chave, unsigned int tam)
 {
@@ -14,21 +14,18 @@ TIPO pesquisa_seq(TIPO dado[], int chave, unsigned int tam)
     return resul;
 }
 
-TIPO pesquisa_bin(TIPO dado[], int chave, unsigned int tam)
+TIPO pesquisa_bin(TIPO dado[], int chave, unsigned int inicio, unsigned int fim)
 {
-    int inicio = 0, fim = (tam - 1), meio;
-    TIPO resul = -1;
+    int meio = (inicio + fim) / 2;
 
-    while(inicio <= fim){
-        meio = (inicio + fim) / 2;
-
+    while ( inicio <= fim ){
         if(dado[meio] == chave)
             return dado[meio];
         else if(dado[meio] > chave)
-            fim = meio - 1;
+            return pesquisa_bin(dado, chave, inicio, meio-1);
         else if(dado[meio] < chave)
-            inicio = meio + 1;
+            return pesquisa_bin(dado, chave, meio+1, fim);
     }
 
-    return resul;
+    return -1;
 }

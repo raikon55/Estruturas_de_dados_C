@@ -6,15 +6,15 @@
 #include <stdbool.h>
 
 /*
- * Header com a implementação de uma pilha em C
+ * Header com a implementação de uma Pilha em C
  * Deve ser modificado para cada tipo de dado
  * Buscando maneiras de evitar esse trabalho extra
  */
 
 typedef int TIPO;
 
-typedef struct c celula;
-typedef struct p pilha;
+typedef struct c Celula;
+typedef struct p Pilha;
 
 /*
  * Celula simples, com ligação apenas para
@@ -22,43 +22,43 @@ typedef struct p pilha;
  */
 struct c{
     TIPO dado;
-    celula *prox;
+    Celula *prox;
 };
 
 struct p{
-    celula *topo;
+    Celula *topo;
     unsigned short tam;
 };
 
 /*
- * Inicializar a pilha com o topo NULL e
- * tamanho da pilha como zero
+ * Inicializar a Pilha com o topo NULL e
+ * tamanho da Pilha como zero
  */
-void inicializar_pilha(pilha *p);
+void inicializar_pilha(Pilha *p);
 
 /*
- * Verifica se a pilha está vazia
+ * Verifica se a Pilha está vazia
  */
-bool vazia_pilha(pilha *p);
+bool vazia_pilha(Pilha *p);
 
 /*
- * Retorna o tamanho da fila
+ * Retorna o tamanho da Pilha
  */
-int tamanho_pilha(pilha p);
+int tamanho_pilha(Pilha p);
 
 /*
- * Adiciona um novo elemento ao topo da pilha
+ * Adiciona um novo elemento ao topo da Pilha
  */
-bool empilhar(pilha *p, TIPO dado);
+bool empilhar(Pilha *p, TIPO dado);
 
 /*
- * Remove um novo elemento do topo da pilha
+ * Remove um novo elemento do topo da Pilha
  */
-TIPO desempilhar(pilha *p);
+TIPO desempilhar(Pilha *p);
 
 /*
- * Deleta a pilha
+ * Deleta a Pilha
  */
-void limpar_pilha(pilha *p);
+void limpar_pilha(Pilha *p);
 
 #endif // PILHA_H_INCLUDED

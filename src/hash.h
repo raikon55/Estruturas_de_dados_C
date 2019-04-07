@@ -15,21 +15,21 @@ typedef int TIPO;
  * Função que cria a hash, recebe um número qualquer e um primo
  * para gerar a hash
  */
-int hash(int num, int mod);
+int hash(int num, const int mod);
 
 /*
  * Iniciar o vetor de listas, usadas para tratar colisões
  */
-void inicializar_hash(lista *tabela[], int mod);
+void inicializar_hash(Lista *tabela[], const int mod);
 
 /*
  * Inserir um elemento na tabela hash
  */
-bool inserir_hash(lista *tabela[], TIPO dado, int mod);
+void inserir_hash(Lista *tabela[], TIPO dado, const int mod);
 
 /*
  * Pesquisa sequencial na na tabela hash
  */
-TIPO pesquisar_hash(lista *tabela[], int chave, int mod);
+TIPO pesquisar_hash(Lista *tabela[], int chave, const int mod);
 
 #endif

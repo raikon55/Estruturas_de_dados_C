@@ -6,13 +6,13 @@
 #include <stdbool.h>
 
 /*
- * Header com a implementação de uma lista duplamente encadeada em C
+ * Header com a implementação de uma Lista duplamente encadeada em C
  * Deve ser modificado para cada tipo de dado
  * Buscando maneiras de evitar esse trabalho extra
  */
 
-typedef struct cd dupla;
-typedef struct l lista;
+typedef struct cd Dupla;
+typedef struct l Lista;
 
 typedef int TIPO;
 
@@ -22,49 +22,49 @@ typedef int TIPO;
  */
 struct cd{
     TIPO dado;
-    dupla *ant, *prox;
+    Dupla *ant, *prox;
 };
 
 struct l{
-    dupla *inicio, *fim;
+    Dupla *inicio, *fim;
     short tam;
 };
 
 
 /*
- * Inicializa a lista com NULL, faz o inicio e fim apontar
+ * Inicializa a Lista com NULL, faz o inicio e fim apontar
  * para o mesmo lugar e tamanho recebe 0.
  */
-void inicializar_lista(lista *l);
+void inicializar_lista(Lista *l);
 
 /*
- * Confere se a lista está vazia,
+ * Confere se a Lista está vazia,
  */
-bool vazia_lista(lista *l);
+bool vazia_lista(Lista *l);
 
 /*
- * Retorna o tamanho da lista
+ * Retorna o tamanho da Lista
  */
-int tamanho_lista(lista l);
+int tamanho_lista(Lista l);
 
 /*
- * Insere um novo elemento ao FINAL da lista
+ * Insere um novo elemento ao FINAL da Lista
  */
-bool inserir_lista(lista *l, TIPO dado);
+bool inserir_lista(Lista *l, TIPO dado);
 
 /*
  * Remove um elemento na POS-ésima posição
  */
-bool remover_lista(lista *l, int pos);
+bool remover_lista(Lista *l, int pos);
 
 /*
- * Pesquisa um elemento na lista, a partir da chave
+ * Pesquisa um elemento na Lista, a partir da chave
  */
-TIPO pesquisar_lista(lista *l, TIPO chave);
+TIPO pesquisar_lista(Lista *l, TIPO chave);
 
 /*
- * Limpa a lista e zera o tamanho
+ * Limpa a Lista e zera o tamanho
  */
-void limpar_lista(lista *l);
+void limpar_lista(Lista *l);
 
 #endif

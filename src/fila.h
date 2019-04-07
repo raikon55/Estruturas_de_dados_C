@@ -6,13 +6,13 @@
 #include <stdbool.h>
 
 /*
- * Header com a implementação de uma fila em C
+ * Header com a implementação de uma Fila em C
  * Deve ser modificado para cada tipo de dado
  * Buscando maneiras de evitar esse trabalho extra
  */
 
-typedef struct c celula;
-typedef struct f fila;
+typedef struct c Celula;
+typedef struct f Fila;
 
 typedef int TIPO;
 
@@ -22,43 +22,43 @@ typedef int TIPO;
  */
 struct c{
     TIPO dado;
-    celula *prox;
+    Celula *prox;
 };
 
 struct f{
-    celula *inicio, *fim;
+    Celula *inicio, *fim;
     int tam;
 };
 
 /*
- * Inicializar a fila com o inicio e fim NULL e
- * tamanho da fila como zero
+ * Inicializar a Fila com o inicio e fim NULL e
+ * tamanho da Fila como zero
  */
-void inicializar_fila(fila *f);
+void inicializar_fila(Fila *f);
 
 /*
- * Verifica se a fila está vazia
+ * Verifica se a Fila está vazia
  */
-bool vazia_fila(fila *f);
+bool vazia_fila(Fila *f);
 
 /*
- * Retorna o tamanho da fila
+ * Retorna o tamanho da Fila
  */
-int tamanho_fila(fila f);
+int tamanho_fila(Fila f);
 
 /*
- * Adiciona um novo elemento ao fim da fila
+ * Adiciona um novo elemento ao fim da Fila
  */
-bool inserir_fila(fila *f, TIPO dado);
+bool enfileirar(Fila *f, TIPO dado);
 
 /*
- * Remove um elemento do fim da fila
+ * Remove um elemento do fim da Fila
  */
-TIPO remover_fila(fila *f);
+TIPO desenfileirar(Fila *f);
 
 /*
- * Deleta a fila
+ * Deleta a Fila
  */
-void limpar_fila(fila *f);
+void limpar_fila(Fila *f);
 
 #endif //FILA_H_INCLUDED

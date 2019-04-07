@@ -5,16 +5,18 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct n node;
+#define TIPO int
+
+typedef struct n Node;
 typedef struct btree ArvBin;
 
 struct n{
     int dado;
-    No *pai, *esq, *dir;
+    Node *pai, *esq, *dir;
 };
 
 struct btree{
-    node *raiz;
+    Node *raiz;
     int tam;
 };
 
@@ -32,17 +34,17 @@ bool inserir_arvore(ArvBin *arvore, int dado);
 /*
  * Mostrar os elementos da árvore InOrder
  */
-void in_ord(node *node);
+void in_ord(Node *node);
 
 /*
  * Mostrar os elementos da árvore PreOrder
  */
-void pre_ord(node *node);
+void pre_ord(Node *node);
 
 /*
  * Mostrar os elementos da árvore PosOrder
  */
-void pos_ord(node *node);
+void pos_ord(Node *node);
 
 /*
  * Pesquisar elemento na árvore
@@ -52,7 +54,7 @@ int pesquisar_arvore(ArvBin *arvore, int chave);
 /*
  * Exibe o pai do nó passado como parâmetro
  */
-int antecessor_node(node *node);
+int antecessor_Node(Node *node);
 
 /*
  * Remover elemento da árvore
