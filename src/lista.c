@@ -75,7 +75,7 @@ TIPO pesquisar_lista(Lista *l, TIPO chave)
 {
     Dupla *temp = l->inicio;
 
-    while(!vazia_lista(l) && chave != temp->dado) temp = temp->prox;
+    while(!vazia_lista(l) && temp != NULL && chave != temp->dado) temp = temp->prox;
 
     if(temp != NULL) return temp->dado;
     else return -1;

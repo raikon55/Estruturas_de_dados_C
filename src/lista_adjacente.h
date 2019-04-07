@@ -1,21 +1,16 @@
-#ifndef LISTA_ADJCENCIA_H_INCLUDED
-#define LISTA_ADJCENCIA_H_INCLUDED
+#ifndef LISTA_ADJACENCIA_H_INCLUDED
+#define LISTA_ADJACENCIA_H_INCLUDED
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "lista.h"
 
-typedef struct v Vertice;
 typedef struct g Grafo;
 
 struct g {
     int num_vertice;
     int num_aresta;
-    Vertice **vert;
-};
-
-struct v {
-    int dado;
-    Vertice *adj;
+    Lista **vert;
 };
 
 /**
@@ -24,13 +19,6 @@ struct v {
  * @verts: Número máximo de vértices
  */
 Grafo* iniciar_grafo(int verts);
-
-/**
- * Cria um novo vértice
- * @graph: Ponteiro para o grafo
- * @vert: Novo vértice a ser inserido
- */
-Vertice* criar_vertice(Grafo *graph, int vert);
 
 /**
  * Criar uma aresta entre dois vértices
@@ -44,6 +32,6 @@ void criar_aresta(Grafo *graph, int vert1, int vert2);
  * Mostrar o grafo
  * @graph: Ponteiro para o grafo
  */
-void show(Vertice *vert);
+void show(Grafo *graph);
 
 #endif /* LISTA_ADJCENCIA_H_ */
