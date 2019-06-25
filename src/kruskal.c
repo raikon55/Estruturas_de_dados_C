@@ -16,8 +16,8 @@ void unir(int subconj[], int v1, int v2)
 void ordenar(Aresta aresta[], int tot_aresta)
 {
     for (unsigned i = 0; i < tot_aresta; i++){
-        for (unsigned j = i; j < tot_aresta; j++){
-            if (aresta[i].peso > aresta[j].peso){
+        for (unsigned j = i+1; j < tot_aresta; j++){
+            if (aresta[j].peso < aresta[i].peso){
                 Aresta temp = aresta[i];
                 aresta[i] = aresta[j];
                 aresta[j] = temp;
@@ -26,10 +26,11 @@ void ordenar(Aresta aresta[], int tot_aresta)
     }
 }
 
-void kruskal(Grafo graph, int subset[])
+void kruskal(Grafo graph, Aresta* arvore)
 {
     int tot_vertices = graph.num_vertices,
         tot_arestas = graph.num_arestas,
+        subset[tot_vertices],
         aux = 0;
 
     memset(subset, -1, sizeof(int) * tot_vertices);
@@ -38,17 +39,22 @@ void kruskal(Grafo graph, int subset[])
           * temp = graph.arestas;
 
     while ( temp != NULL ){
-        aresta[aux++] = *temp;
+        aresta[aux].peso = temp->peso;
+        aresta[aux].vertice_in = temp->vertice_in;
+        aresta[aux].vertice_out = temp->vertice_out;
+        aresta[aux++].prox = NULL;
         temp = temp->prox;
     }
 
     ordenar(aresta, tot_arestas);
+    aux = 0;
 
     for (unsigned i = 0; i < tot_vertices; i++){
-        int v1 = buscar(subset, aresta[i].vertice_out);
-        int v2 = buscar(subset, aresta[i].vertice_in);
+        int v1 = buscar(subset, aresta[i].vertice_in);
+        int v2 = buscar(subset, aresta[i].vertice_out);
 
         if (v1 != v2){
+            arvore[aux++] = aresta[i];
             unir(subset, v1, v2);
         }
     }

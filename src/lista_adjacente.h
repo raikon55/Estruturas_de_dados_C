@@ -5,33 +5,26 @@
 #include <stdlib.h>
 #include "lista.h"
 
-typedef struct g Grafo;
-
-struct g {
+typedef struct {
     int num_vertice;
     int num_aresta;
     Lista **vert;
-};
+}Grafo;
 
 /**
  * Inicia o gráfo com o número de vértices
  * já definido
- * @verts: Número máximo de vértices
  */
-Grafo* iniciar_grafo(int verts);
+void inicializar_grafo(Grafo* graph, int total_vert);
 
 /**
  * Criar uma aresta entre dois vértices
- * @graph: Ponteiro para o grafo
- * @vert1: Vértice primário
- * @vert2: vértice secundário
  */
-void criar_aresta(Grafo *graph, int vert1, int vert2);
+void criar_aresta(Grafo* graph, int vert_out, int vert_in, unsigned int peso);
 
 /**
- * Mostrar o grafo
- * @graph: Ponteiro para o grafo
+ * Finaliza o grafo
  */
-void show(Grafo *graph);
+void finalizar_grafo(Grafo* graph);
 
 #endif /* LISTA_ADJCENCIA_H_ */
