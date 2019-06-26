@@ -1,8 +1,7 @@
 # Estruturas_de_dados_C
 Estruturas de dados implementadas em C.
 
-Códigos desenvolvidos durante as disciplinas de
-Algoritmos e Estruturas de Dados I, II e III oferecidas pelo curso de
+Códigos desenvolvidos durante as disciplinas oferecidas pelo curso de
 Engenharia de Computação da PUC Minas.
 
 O objetivo é centralizar todas as estruturas implementas em C em um único lugar
@@ -25,8 +24,6 @@ _Material sobre filas_
 A pilha é o oposto da fila, pois o último a entrar será o primeiro a sair. Normalmente utilizada em processos computacionais e linguagens de programação como C, por sempre voltar a quem chamou, sem interferir em outras partes.
 Uma imagem para melhor entendimento de uma pilha:
 
-![Processo de empilhar e desempilhar](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lifo_stack.png/350px-Lifo_stack.png)
-
 _Material sobre pilhas_
 * [Apostila C Progressivo](https://www.cprogressivo.net/2014/05/Pilhas-Stack-em-C-O-Que-E-Como-Implementar-Tutorial-C-Estrutura-de-Dados.html)
 * [Apostila da USP](https://www.ime.usp.br/~pf/algoritmos/aulas/pilha.html)
@@ -39,6 +36,37 @@ _Material sobre listas_
 * [Apostila C Progressivo](https://www.cprogressivo.net/2013/10/Como-fazer-uma-lista-em-C.html)
 * [Explicação detalhada de lista](https://www.cprogressivo.net/2013/10/Listas-em-C-O-que-e-como-funciona-uma-LIST.html)
 * [Apostila da USP](https://www.ime.usp.br/~pf/algoritmos/aulas/lista.html)
+
+### Conceitos de algortimos de ordenação
+
+Os algoritmos de ordenação pode ser divididos em dois métodos:
+simples e eficientes.
+
+O método simples é o grupo de algoritmos que podem ser compreendidos facilmente. Ideiais para pequenos vetores e programas mais simples.
+
+O método eficiente possui algoritmos com um grau de complexidade maior, buscam fazer poucas comparações e trabalham melhor com grande grupo de dados. 
+
+**[Bolha](src/ordenação.h)**
+
+Ordenação utilizando o algoritmo bolha é simples, são feita permutações consecutivas até todos os elementos estarem ordenados. [Donald Knuth](https://www-cs-faculty.stanford.edu/~knuth/), autor da série sobre de livros _[The Art of Computer Programming](https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming)_, sobre o bolha:
+
+"[...] the bubble sort seems to have nothing to recommend it, except a catchy name and the fact that it leads to some interesting theoretical problems [...]"
+
+**[Inserção](src/ordenação.h)**
+
+A cada novo elemento, é conferido a posição que deve inseri-lo, e os elementos subsequentes são movidos para "abrir espaço". O algoritmo de inserção é recomendado quando já há um grupo de elementos ordenados, e se deseja inserir um novo, mantendo a ordenação.
+
+**[Seleção](src/ordenação.h)**
+
+O conceito base do algoritmo é selecionar o menor elemento e passa-lo para a primeira posição (ou última, dependendo da ordem que se deseja ordenar), e fazer o mesmo com o segundo, terceiro e assim por diante. Uma aplicação desse algoritmo é quando se deseja encontrar o k-ésimo elemento de um vetor, pois se ordena até a k-ésima posição e retorna o elemento dessa posição.
+
+**[Quick](src/ordenação.h)**
+
+
+
+**[Merge](src/ordenação.h)**
+
+Sua ideia base consiste em dividir o problema em vários subproblemas, e resolve-los através da recursividade. Após todos os subproblemas terem sido resolvidos, é feito a união das resoluções. Como o algoritmo Merge Sort usa recursividade, há um alto consumo de memória e tempo de execução, não sendo a melhor técnica para certos problemas.
 
 ### Conceito de hash
 
@@ -65,3 +93,13 @@ _Material sobre árvores binárias_
 * [Árvore binária](https://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria)
 * [Apostila da USP](https://www.ime.usp.br/~pf/algoritmos/aulas/bint.html)
 * [Apostila UNICAMP](https://www.ft.unicamp.br/liag/siteEd/definicao/arvore-binaria.php)
+
+### Conceitos de teoria de grafos
+
+**[Lista de incidência]()**
+
+**[Matriz de adjacencia]()**
+
+**[Lista de adjacencia]()**
+
+**[Kruskal]()**
