@@ -48,7 +48,7 @@ O método eficiente possui algoritmos com um grau de complexidade maior, buscam 
 
 **[Bolha](src/ordenação.h)**
 
-Ordenação utilizando o algoritmo bolha é simples, são feita permutações consecutivas até todos os elementos estarem ordenados. [Donald Knuth](https://www-cs-faculty.stanford.edu/~knuth/), autor da série sobre de livros _[The Art of Computer Programming](https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming)_, sobre o bolha:
+Ordenação utilizando o algoritmo bolha é simples, são feita permutações consecutivas até todos os elementos estarem ordenados. [Donald Knuth](https://www-cs-faculty.stanford.edu/~knuth/), autor da série de livros _[The Art of Computer Programming](https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming)_, explicando o bolha:
 
 "[...] the bubble sort seems to have nothing to recommend it, except a catchy name and the fact that it leads to some interesting theoretical problems [...]"
 
@@ -62,7 +62,7 @@ O conceito base do algoritmo é selecionar o menor elemento e passa-lo para a pr
 
 **[Quick](src/ordenação.h)**
 
-
+O _quick sort_ é a melhor opção prática para ordenação, devido à sua notável eficiência na média. É o algoritmo incluso em diversas bibliotecas das mais diversas linguagens de programação, um exemplo é o qsort() da _stdlib.h_ da linguagem C.
 
 **[Merge](src/ordenação.h)**
 
@@ -98,8 +98,8 @@ _Material sobre árvores binárias_
 
 **[Lista de incidência]()**
 
-**[Matriz de adjacencia]()**
+**[Matriz de adjacencia](src/matriz_adjacente.h)**
 
-**[Lista de adjacencia]()**
+**[Lista de adjacencia](src/lista_adjacente.h)**
 
-**[Kruskal]()**
+**[Kruskal](src/kruskal.h)**
