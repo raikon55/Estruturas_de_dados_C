@@ -3,24 +3,26 @@
 
 #include "grafos.h"
 
-typedef struct {
-    int pai;
-    int value;
-}Subset;
+/**
+ * Determina a qual conjunto um determinado elemento pertence.
+ * Também útil para determinar se dois elementos estão no mesmo conjunto.
+ */
+int buscar(int subconj[], int pos);
 
 /**
- *
+ * Combina ou agrupa dois conjuntos em um único conjunto.
  */
-int buscar(Subset subconj[], int i);
+void unir(int subconj[], int x, int y);
 
 /**
- *
+ * Ordenar as arestas em ordem não-decrescente.
  */
-void unir(Subset subconj[], int x, int y);
+void ordenar(Aresta aresta[], int tot_aresta);
 
 /**
- *
+ * Dado um conjunto ordenado de arestas, retorna uma árvore
+ * geradora minima.
  */
-Subset* kruskal(Grafo graph);
+void kruskal(Grafo graph, Aresta* arvore);
 
 #endif /* KRUSKAL_H_ */

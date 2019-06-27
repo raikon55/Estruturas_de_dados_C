@@ -1,58 +1,61 @@
 #include "kruskal.h"
 
-int buscar(Subset subconj[], int i)
+int buscar(int subconj[], int pos)
 {
-    if (subconj[i].pai == -1) return i;
-    else return buscar(subconj, subconj[i].pai);
+    if (subconj[pos] == -1) return pos;
+    else return buscar(subconj, subconj[pos]);
 }
 
-void unir(Subset subconj[], int x, int y)
+void unir(int subconj[], int v1, int v2)
 {
-    int x_conj = buscar(subconj, x);
-    int y_conj = buscar(subconj, y);
-    subconj[x_conj].pai = y_conj;
+    int v1_conj = buscar(subconj, v1);
+    int v2_conj = buscar(subconj, v2);
+    subconj[v1_conj] = v2_conj;
 }
 
 void ordenar(Aresta aresta[], int tot_aresta)
 {
-	for (unsigned i = 0; i < tot_aresta; i++){
-		for (unsigned j = i; j < tot_aresta; j++){
-			if (aresta[i].peso < aresta[j].peso){
-				Aresta temp = aresta[i];
-				aresta[i] = aresta[j];
-				aresta[j] = temp;
-			}
-		}
-	}
+    for (unsigned i = 0; i < tot_aresta; i++){
+        for (unsigned j = i+1; j < tot_aresta; j++){
+            if (aresta[j].peso < aresta[i].peso){
+                Aresta temp = aresta[i];
+                aresta[i] = aresta[j];
+                aresta[j] = temp;
+            }
+        }
+    }
 }
 
-Subset* kruskal(Grafo graph)
+void kruskal(Grafo graph, Aresta* arvore)
 {
-    int tot_vertices = graph.num_vertices;
-    int tot_arestas = graph.num_arestas;
-    Subset* subset = (Subset*) calloc(tot_vertices-1, sizeof(Subset));
+    int tot_vertices = graph.num_vertices,
+        tot_arestas = graph.num_arestas,
+        subset[tot_vertices],
+        aux = 0;
 
-    Aresta* aresta =(Aresta*) calloc(tot_arestas, sizeof(Aresta));
-    for (unsigned i = 0; i < tot_arestas; i++){
-    	aresta[i] = graph.vertices[i].arestas;
+    memset(subset, -1, sizeof(int) * tot_vertices);
+
+    Aresta* aresta = (Aresta*) calloc(tot_arestas, sizeof(Aresta)),
+          * temp = graph.arestas;
+
+    while ( temp != NULL ){
+        aresta[aux].peso = temp->peso;
+        aresta[aux].vertice_in = temp->vertice_in;
+        aresta[aux].vertice_out = temp->vertice_out;
+        aresta[aux++].prox = NULL;
+        temp = temp->prox;
     }
 
     ordenar(aresta, tot_arestas);
-//    Aresta* mst = (Aresta*) malloc(sizeof(Aresta));
+    aux = 0;
 
     for (unsigned i = 0; i < tot_vertices; i++){
-        subset[i].pai = i;
-        subset[i].value = 0;
-    }
-
-    for (unsigned i = 0; i < (tot_vertices - 1); i++){
         int v1 = buscar(subset, aresta[i].vertice_in);
         int v2 = buscar(subset, aresta[i].vertice_out);
 
         if (v1 != v2){
-        	unir(subset, v1, v2);
+            arvore[aux++] = aresta[i];
+            unir(subset, v1, v2);
         }
     }
-
-    return subset;
 }

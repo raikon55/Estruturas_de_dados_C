@@ -1,54 +1,48 @@
 #include "lista_adjacente.h"
 
-Grafo* iniciar_grafo(int verts)
+void inicializar_grafo(Grafo* graph, int total_vert)
 {
-    Grafo *graph = (Grafo*) malloc(sizeof(Grafo));
-    if ( graph == NULL ){
+    graph->vert = (Lista**) calloc(total_vert, sizeof(Lista*));
+    if ( graph->vert == NULL || graph == NULL){
         puts("Erro na alocação");
+        exit(1);
     }
 
-    graph->vert = (Lista**) calloc(verts, sizeof(Lista*));
-    if ( graph->vert == NULL){
-        puts("Erro na alocação");
-    }
-
-    for ( int i = 0; i < verts; i++){
+    for ( int i = 0; i < total_vert; i++){
         graph->vert[i] = (Lista*) malloc(sizeof(Lista));
         inicializar_lista(graph->vert[i]);
     }
 
-    graph->num_vertice = verts;
+    graph->num_vertice = total_vert;
     graph->num_aresta = 0;
-
-    return graph;
 }
 
-void criar_aresta(Grafo *graph, int vert1, int vert2)
+void criar_aresta(Grafo* graph, int vert_out, int vert_in, unsigned int peso)
 {
-    Dupla *temp = graph->vert[vert1]->inicio;
+    Dupla* temp_out = graph->vert[vert_in]->inicio,
+         * temp_in = graph->vert[vert_out]->inicio;
 
-    while ( temp != NULL ){
-        if ( temp->dado == vert2 ){
-            return;
-        }
-        temp = temp->prox;
+    while ( temp_out != NULL ){
+        if ( temp_out->dado == vert_out ) return;
+        temp_out = temp_out->prox;
+    }
+    
+    while ( temp_in != NULL ){
+        if ( temp_in->dado == vert_in ) return;
+        temp_in = temp_in->prox;
     }
 
-    inserir_lista(graph->vert[vert1], vert2);
-    inserir_lista(graph->vert[vert2], vert1);
+    inserir_lista(graph->vert[vert_in], vert_out);
+    inserir_lista(graph->vert[vert_out], vert_in);
 
     graph->num_aresta++;
 }
 
-void show(Grafo *graph)
+void finalizar_grafo(Grafo* graph)
 {
-    for(unsigned short i = 0; i < graph->num_vertice; i++){
-        Dupla *temp = graph->vert[i]->inicio;
-        printf("%i ", i);
-        while ( temp != NULL ){
-            printf(" --> %i ", temp->dado);
-            temp = temp->prox;
-        }
-        puts("");
+    for (unsigned i = 0; i < graph->num_vertice; i++){
+        limpar_lista(graph->vert[i]);
     }
+
+    free(graph);
 }
