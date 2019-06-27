@@ -96,10 +96,28 @@ _Material sobre árvores binárias_
 
 ### Conceitos de teoria de grafos
 
+"A teoria dos grafos estuda objetos combinatórios — osgrafos— que são um bommodelo para muitos problemas em vários ramos da matemática, da informática, daengenharia e da indústria. Muitos dos problemas sobre grafos tornaram-se célebresporque são um interessante desafio intelectual e porque têm importantes aplicaçõespráticas."[¹](https://www.ime.usp.br/~pf/teoriadosgrafos/texto/TeoriaDosGrafos.pdf)
+
 **[Lista de incidência]()**
+
+
 
 **[Matriz de adjacencia](src/matriz_adjacente.h)**
 
+Uma matriz de adjacência é uma das formas de se representar um grafo.
+
+Dado um grafo G com N vértices, podemos representá-lo em uma matriz N x N A(G)(ou simplesmente A). A definição precisa das entradas da matriz varia de acordo com as propriedades do grafo que se deseja representar, porém de forma geral o valor A(G) guarda informações sobre como os vértices Vi e Vj estão relacionados (isto é, informações sobre a adjacência de Vi e Vj).
+
+Para representar um grafo não direcionado, simples e sem pesos nas arestas, basta que as entradas A(G) da matriz A contenham 1 se Vi e Vj são adjacentes e 0 caso contrário. Se as arestas do grafo tiverem pesos, A(G) pode conter, ao invés de 1 quando houver uma aresta entre Vi e Vj, o peso dessa mesma aresta. 
+
 **[Lista de adjacencia](src/lista_adjacente.h)**
 
+Uma lista de adjacência é a representação de todas arestas ou arcos de um grafo em uma lista.
+
+Se o grafo é não direcionado, cada entrada é um conjunto de dois nós contendo as duas extremidades da aresta correspondente; se ele for dirigido, cada entrada é uma tupla de dois nós, um indicando o nó de origem e o outro denotando o nó destino do arco correspondente.
+
+Normalmente, as listas de adjacência são desordenadas. 
+
 **[Kruskal](src/kruskal.h)**
+
+O algoritmo de Kruskal é um algoritmo em teoria dos grafos que busca uma árvore geradora mínima para um grafo conexo com pesos. Isto significa que ele encontra um subconjunto das arestas que forma uma árvore que inclui todos os vértices, onde o peso total, dado pela soma dos pesos das arestas da árvore, é minimizado. Se o grafo não for conexo, então ele encontra uma floresta geradora mínima.
