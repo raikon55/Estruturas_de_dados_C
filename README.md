@@ -96,7 +96,7 @@ _Material sobre árvores binárias_
 
 ### Conceitos de teoria de grafos
 
-"A teoria dos grafos estuda objetos combinatórios — osgrafos— que são um bommodelo para muitos problemas em vários ramos da matemática, da informática, daengenharia e da indústria. Muitos dos problemas sobre grafos tornaram-se célebresporque são um interessante desafio intelectual e porque têm importantes aplicaçõespráticas."[¹](https://www.ime.usp.br/~pf/teoriadosgrafos/texto/TeoriaDosGrafos.pdf)
+"A teoria dos grafos estuda objetos combinatórios — os grafos— que são um bom modelo para muitos problemas em vários ramos da matemática, da informática, da engenharia e da indústria. Muitos dos problemas sobre grafos tornaram-se célebres, pois são um interessante desafio intelectual e porque têm importantes aplicações práticas."[¹](https://www.ime.usp.br/~pf/teoriadosgrafos/texto/TeoriaDosGrafos.pdf)
 
 **[Lista de incidência]()**
 
