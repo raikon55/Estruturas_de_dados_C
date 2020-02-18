@@ -15,8 +15,8 @@ void unir(int subconj[], int v1, int v2)
 
 void ordenar(Aresta aresta[], int tot_aresta)
 {
-    for (unsigned i = 0; i < tot_aresta; i++){
-        for (unsigned j = i+1; j < tot_aresta; j++){
+    for (int i = 0; i < tot_aresta; i++){
+        for (int j = i+1; j < tot_aresta; j++){
             if (aresta[j].peso < aresta[i].peso){
                 Aresta temp = aresta[i];
                 aresta[i] = aresta[j];
@@ -49,7 +49,7 @@ void kruskal(Grafo graph, Aresta* arvore)
     ordenar(aresta, tot_arestas);
     aux = 0;
 
-    for (unsigned i = 0; i < tot_vertices; i++){
+    for (int i = 0; i < tot_vertices; i++){
         int v1 = buscar(subset, aresta[i].vertice_in);
         int v2 = buscar(subset, aresta[i].vertice_out);
 

@@ -14,14 +14,12 @@
 typedef struct c Celula;
 typedef struct f Fila;
 
-typedef int TIPO;
-
 /*
  * Celula simples, com ligação apenas para
  * a próxima celula
  */
 struct c{
-    TIPO dado;
+    int dado;
     Celula *prox;
 };
 
@@ -49,12 +47,12 @@ int tamanho_fila(Fila f);
 /*
  * Adiciona um novo elemento ao fim da Fila
  */
-bool enfileirar(Fila *f, TIPO dado);
+bool enfileirar(Fila *f, int dado);
 
 /*
  * Remove um elemento do fim da Fila
  */
-TIPO desenfileirar(Fila *f);
+int desenfileirar(Fila *f);
 
 /*
  * Deleta a Fila

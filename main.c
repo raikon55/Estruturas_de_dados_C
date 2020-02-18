@@ -1,5 +1,5 @@
 //#include "src/fila.h"
-//#include "src/pilha.h"
+#include "src/pilha.h"
 //#include "src/search.h"
 //#include "src/lista_adjacente.h"
 
@@ -32,11 +32,10 @@ void exemplo_fila(void)
 }
 */
 
-/*
 void exemplo_pilha(void)
 {
     // Declarar e inicializar pilha
-    pilha exemplo;
+    Pilha exemplo;
     inicializar_pilha(&exemplo);
 
     // Checar se está vazia e o tamanho
@@ -57,7 +56,6 @@ void exemplo_pilha(void)
     while(tamanho_pilha(exemplo) != 0) printf("Removido %i\n", desempilhar(&exemplo));
     limpar_pilha(&exemplo);
 }
-*/
 
 /*
 void exemplo_pesquisa(void)
@@ -132,7 +130,7 @@ int main(void)
     //exemplo_lista_adjacente();
     //exemplo_hash();
     //exemplo_fila();
-    //exemplo_pilha();
+    exemplo_pilha();
     //exemplo_pesquisa();
     //exemplo_lista();
     return 0;

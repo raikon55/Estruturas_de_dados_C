@@ -4,7 +4,7 @@ TIPO pesquisa_seq(TIPO dado[], int chave, unsigned int tam)
 {
     TIPO resul = -1;
 
-    for(int c = 0; c < tam; c++){
+    for(unsigned c = 0; c < tam; c++){
         if(dado[c] == chave){
             resul = dado[c];
             return resul;

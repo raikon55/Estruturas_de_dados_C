@@ -1,7 +1,30 @@
 #ifndef KRUSKAL_H_
 #define KRUSKAL_H_
 
-#include "grafos.h"
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct edge Aresta;
+typedef struct c Celula;
+
+struct edge{
+    int vertice_in;
+    int vertice_out;
+    int peso;
+    Aresta* prox;
+};
+
+struct c {
+    Aresta aresta;
+    int nivel;
+    Celula* prox;
+};
+
+typedef struct {
+    int num_arestas;
+    int num_vertices;
+    Aresta* arestas;
+}Grafo;
 
 /**
  * Determina a qual conjunto um determinado elemento pertence.

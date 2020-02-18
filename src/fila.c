@@ -19,7 +19,7 @@ int tamanho_fila(Fila f)
     return f.tam;
 }
 
-bool enfileirar(Fila *f, TIPO dado)
+bool enfileirar(Fila *f, int dado)
 {
     f->fim->prox = (Celula*) malloc(sizeof(Celula));
 
@@ -31,14 +31,14 @@ bool enfileirar(Fila *f, TIPO dado)
     return true;
 }
 
-TIPO desenfileirar(Fila *f)
+int desenfileirar(Fila *f)
 {
-    if (vazia_fila(f)) return (TIPO)NULL;
+    if (vazia_fila(f)) return 0;
 
     Celula *temp = f->inicio;
     f->inicio = f->inicio->prox;
 
-    TIPO dado = temp->dado;
+    int dado = temp->dado;
     free(temp);
     f->tam--;
 

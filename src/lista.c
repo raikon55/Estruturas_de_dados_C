@@ -21,7 +21,7 @@ int tamanho_lista(Lista l)
     return l.tam;
 }
 
-bool inserir_lista(Lista *l, TIPO dado)
+bool inserir_lista(Lista *l, int dado)
 {
     Dupla *nova = (Dupla*)malloc( sizeof(Dupla) );
     if(nova == NULL) return false;
@@ -71,7 +71,7 @@ bool remover_lista(Lista *l, int pos)
     return true;
 }
 
-TIPO pesquisar_lista(Lista *l, TIPO chave)
+int pesquisar_lista(Lista *l, int chave)
 {
     Dupla *temp = l->inicio;
 

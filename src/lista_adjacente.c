@@ -40,7 +40,7 @@ void criar_aresta(Grafo* graph, int vert_out, int vert_in, unsigned int peso)
 
 void finalizar_grafo(Grafo* graph)
 {
-    for (unsigned i = 0; i < graph->num_vertice; i++){
+    for (int i = 0; i < graph->num_vertice; i++){
         limpar_lista(graph->vert[i]);
     }
 

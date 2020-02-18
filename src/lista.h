@@ -14,14 +14,12 @@
 typedef struct cd Dupla;
 typedef struct l Lista;
 
-typedef int TIPO;
-
 /*
  * Celula dupla, ligação para a próxima e
  * para a anterior
  */
 struct cd{
-    TIPO dado;
+    int dado;
     Dupla *ant, *prox;
 };
 
@@ -50,7 +48,7 @@ int tamanho_lista(Lista l);
 /*
  * Insere um novo elemento ao FINAL da Lista
  */
-bool inserir_lista(Lista *l, TIPO dado);
+bool inserir_lista(Lista *l, int dado);
 
 /*
  * Remove um elemento na POS-ésima posição
@@ -60,7 +58,7 @@ bool remover_lista(Lista *l, int pos);
 /*
  * Pesquisa um elemento na Lista, a partir da chave
  */
-TIPO pesquisar_lista(Lista *l, TIPO chave);
+int pesquisar_lista(Lista *l, int chave);
 
 /*
  * Limpa a Lista e zera o tamanho
