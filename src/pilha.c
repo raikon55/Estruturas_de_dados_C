@@ -1,51 +1,49 @@
 #include "pilha.h"
 
-void inicializar_pilha(Pilha *p)
+void inicializar_pilha(pilha_t *p)
 {
-    p->topo = NULL;     // Sentinela
     p->tam = 0;
+    p->prox = NULL;
 }
 
-bool vazia_pilha(Pilha *p)
+bool vazia_pilha(pilha_t *p)
 {
-    if(p->topo == NULL) return true;
-    else return false;
+    return (p->tam == 0);
 }
 
-int tamanho_pilha(Pilha p)
+int tamanho_pilha(pilha_t p)
 {
     return p.tam;
 }
 
-bool empilhar(Pilha *p, int dado)
+bool empilhar(pilha_t *p, int dado)
 {
-    Celula *temp = (Celula*)malloc(sizeof(Celula)); // Novo sentinela
+    pilha_t *temp = (pilha_t*) malloc(sizeof(pilha_t)); // Novo sentinela
     if(temp == NULL) return false;
 
     temp->dado = dado;
-    temp->prox = p->topo;
+    temp->tam = p->tam+1;
+    temp->prox = p;
 
-    p->topo = temp;     // Atualiza o topo e a sentinela
-    p->tam++;
+    p = temp;   // Atualiza o topo
 
     return true;
 }
 
-int desempilhar(Pilha *p)
+int desempilhar(pilha_t *p)
 {
     if(vazia_pilha(p)) return -1;    // Se estiver vazia, retorne
 
-    int dado = p->topo->dado;  // Remove o dado no topo
+    int dado = p->dado;  // Remove o dado no topo
 
-    Celula *temp = p->topo;     // Ponteiro para o topo
-    p->topo = p->topo->prox;    // Atualiza a proxima celula como topo
+    pilha_t *temp = p;     // Ponteiro para o topo
+    p = p->prox;    // Atualiza a proxima celula como topo
     free(temp);                 // Libera o antigo topo
 
-    p->tam--;
     return dado;
 }
 
-void limpar_pilha(Pilha *p)
+void limpar_pilha(pilha_t *p)
 {
     // Esvazia a Pilha
     while(!vazia_pilha(p)) desempilhar(p);

@@ -35,26 +35,26 @@ void exemplo_fila(void)
 void exemplo_pilha(void)
 {
     // Declarar e inicializar pilha
-    Pilha exemplo;
-    inicializar_pilha(&exemplo);
+    pilha_t* exemplo = (pilha_t*) malloc(sizeof(pilha_t));
+    inicializar_pilha(exemplo);
 
     // Checar se está vazia e o tamanho
-    bool vazia = vazia_pilha(&exemplo);
-    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(exemplo));
+    bool vazia = vazia_pilha(exemplo);
+    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(*exemplo));
 
     // Inserir dados na pilha
-    empilhar(&exemplo, 0);
-    empilhar(&exemplo, 1);
-    empilhar(&exemplo, 2);
-    empilhar(&exemplo, 3);
+    empilhar(exemplo, 0);
+    empilhar(exemplo, 1);
+    empilhar(exemplo, 2);
+    empilhar(exemplo, 3);
 
     // Checar se está vazia e o tamanho
-    vazia = vazia_pilha(&exemplo);
-    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(exemplo));
+    vazia = vazia_pilha(exemplo);
+    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(*exemplo));
 
     // Mostrar os dados e limpar a pilha
-    while(tamanho_pilha(exemplo) != 0) printf("Removido %i\n", desempilhar(&exemplo));
-    limpar_pilha(&exemplo);
+    while(tamanho_pilha(*exemplo) != 0) printf("Removido %i\n", desempilhar(exemplo));
+    limpar_pilha(exemplo);
 }
 
 /*
