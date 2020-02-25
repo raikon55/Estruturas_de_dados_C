@@ -3,13 +3,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista.h"
 
-typedef struct {
+typedef struct g Grafo;
+typedef struct edge Aresta;
+
+struct g{
     int num_vertice;
     int num_aresta;
-    Lista **vert;
-}Grafo;
+    Aresta **vert;
+};
+
+struct edge {
+    int peso;
+    int dado;
+    Aresta* prox;
+};
 
 /**
  * Inicia o gráfo com o número de vértices
@@ -21,6 +29,8 @@ void inicializar_grafo(Grafo* graph, int total_vert);
  * Criar uma aresta entre dois vértices
  */
 void criar_aresta(Grafo* graph, int vert_out, int vert_in, unsigned int peso);
+
+void adicionar_aresta(Aresta* vert_in, int vert_out, unsigned int peso);
 
 /**
  * Finaliza o grafo

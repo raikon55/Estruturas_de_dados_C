@@ -1,8 +1,8 @@
 #include "busca.h"
 
-TIPO pesquisa_seq(TIPO dado[], int chave, unsigned int tam)
+int pesquisa_seq(int dado[], int chave, unsigned int tam)
 {
-    TIPO resul = -1;
+    int resul = -1;
 
     for(unsigned c = 0; c < tam; c++){
         if(dado[c] == chave){
@@ -14,7 +14,7 @@ TIPO pesquisa_seq(TIPO dado[], int chave, unsigned int tam)
     return resul;
 }
 
-TIPO pesquisa_bin(TIPO dado[], int chave, unsigned int inicio, unsigned int fim)
+int pesquisa_bin(int dado[], int chave, unsigned int inicio, unsigned int fim)
 {
     int meio = (inicio + fim) / 2;
 

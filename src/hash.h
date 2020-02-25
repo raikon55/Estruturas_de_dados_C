@@ -5,11 +5,9 @@
 
 /*
  * Header com a implementação da tabela hash em C
- * Deve ser modificado para cada tipo de dado
+ * Deve ser modificado para cada int de dado
  * Buscando maneiras de evitar esse trabalho extra
  */
-
-typedef int TIPO;
 
 /*
  * Função que cria a hash, recebe um número qualquer e um primo
@@ -25,11 +23,11 @@ void inicializar_hash(Lista *tabela[], const int mod);
 /*
  * Inserir um elemento na tabela hash
  */
-void inserir_hash(Lista *tabela[], TIPO dado, const int mod);
+void inserir_hash(Lista *tabela[], int dado, const int mod);
 
 /*
  * Pesquisa sequencial na na tabela hash
  */
-TIPO pesquisar_hash(Lista *tabela[], int chave, const int mod);
+int pesquisar_hash(Lista *tabela[], int chave, const int mod);
 
 #endif

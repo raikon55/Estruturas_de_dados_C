@@ -7,7 +7,7 @@
 
 /*
  * Header com a implementação de uma Fila em C
- * Deve ser modificado para cada tipo de dado
+ * Deve ser modificado para cada int de dado
  * Buscando maneiras de evitar esse trabalho extra
  */
 

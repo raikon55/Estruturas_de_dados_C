@@ -25,7 +25,7 @@ void exemplo_fila(void)
     printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_fila(exemplo));
 
     // Mostrar os dados e limpar a fila
-    while(tamanho_fila(exemplo) != 0) { TIPO dado = remover_fila(&exemplo); printf("Removido %i\n", dado); }
+    while(tamanho_fila(exemplo) != 0) { int dado = remover_fila(&exemplo); printf("Removido %i\n", dado); }
     vazia = vazia_fila(&exemplo);
     printf("Vazia? %i\n", vazia);
     limpar_fila(&exemplo);
@@ -60,7 +60,7 @@ void exemplo_pilha(void)
 /*
 void exemplo_pesquisa(void)
 {
-    TIPO exemplo[10];
+    int exemplo[10];
     for(int i = 0; i < 10; i++) exemplo[i] = i;
     printf("Binaria -> %i\n", pesquisa_bin(exemplo, 5, 10));
     printf("Sequencial -> %i\n", pesquisa_seq(exemplo, 5, 10));
@@ -77,7 +77,7 @@ void exemplo_lista(void)
 
     for(int i = 0; i < 4; i++) inserir_lista(&exemplo, i);
 
-    TIPO tmp = pesquisar_lista(&exemplo, 5);
+    int tmp = pesquisar_lista(&exemplo, 5);
     if(tmp == -1) puts("Elemento não encontrado");
     printf("Elemento -> %i\n", tmp);
     printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_lista(exemplo));

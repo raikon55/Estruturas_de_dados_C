@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define TIPO int
-
 typedef struct n Node;
 typedef struct btree ArvBin;
 

@@ -35,15 +35,9 @@ Grafo* iniciar_matriz_adjacente(int vertices)
     else return NULL;
 }
 
-void criar_aresta_matriz(Grafo *graph, int vert1, int vert2)
+int obter_aresta(Grafo* grafo, int vert1, int vert2)
 {
-    if (graph->matriz[vert1][vert2] == 0){
-        graph->matriz[vert1][vert2] = 1;
-        graph->matriz[vert2][vert1] = 1;
-        graph->aresta++;
-    }else{
-        puts("Erro na criação da aresta");
-    }
+    return grafo->matriz[vert1][vert2];
 }
 
 void remove_aresta_matriz(Grafo *graph, int vert1, int vert2)

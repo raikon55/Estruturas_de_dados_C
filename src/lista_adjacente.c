@@ -2,15 +2,15 @@
 
 void inicializar_grafo(Grafo* graph, int total_vert)
 {
-    graph->vert = (Lista**) calloc(total_vert, sizeof(Lista*));
+    graph->vert = (Aresta**) calloc(total_vert, sizeof(Aresta*));
     if ( graph->vert == NULL || graph == NULL){
         puts("Erro na alocação");
         exit(1);
     }
 
     for ( int i = 0; i < total_vert; i++){
-        graph->vert[i] = (Lista*) malloc(sizeof(Lista));
-        inicializar_lista(graph->vert[i]);
+        graph->vert[i] = (Aresta*) malloc(sizeof(Aresta));
+        graph->vert[i]->prox = NULL;
     }
 
     graph->num_vertice = total_vert;
@@ -19,8 +19,8 @@ void inicializar_grafo(Grafo* graph, int total_vert)
 
 void criar_aresta(Grafo* graph, int vert_out, int vert_in, unsigned int peso)
 {
-    Dupla* temp_out = graph->vert[vert_in]->inicio,
-         * temp_in = graph->vert[vert_out]->inicio;
+    Aresta* temp_out = graph->vert[vert_in]->prox,
+         * temp_in = graph->vert[vert_out]->prox;
 
     while ( temp_out != NULL ){
         if ( temp_out->dado == vert_out ) return;
@@ -32,16 +32,36 @@ void criar_aresta(Grafo* graph, int vert_out, int vert_in, unsigned int peso)
         temp_in = temp_in->prox;
     }
 
-    inserir_lista(graph->vert[vert_in], vert_out);
-    inserir_lista(graph->vert[vert_out], vert_in);
+    adicionar_aresta(graph->vert[vert_in], vert_out, peso);
+    adicionar_aresta(graph->vert[vert_out], vert_in, peso);
 
     graph->num_aresta++;
+}
+
+void adicionar_aresta(Aresta* vert_in, int vert_out, unsigned int peso)
+{
+    Aresta* temp = vert_in->prox;
+
+    while (temp->prox != NULL) temp = temp->prox;
+
+    temp->dado = vert_out;
+    temp->peso = peso;
+    temp->prox = NULL;
+}
+
+void finalizar_aresta(Aresta* arestas)
+{
+    while (arestas->prox != NULL) {
+        Aresta* temp = arestas->prox;
+        arestas = arestas->prox;
+        free(temp);
+    }
 }
 
 void finalizar_grafo(Grafo* graph)
 {
     for (int i = 0; i < graph->num_vertice; i++){
-        limpar_lista(graph->vert[i]);
+        finalizar_aresta(graph->vert[i]);
     }
 
     free(graph);

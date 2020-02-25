@@ -5,14 +5,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-/*
- * Header com a implementação de uma Pilha em C
- * Deve ser modificado para cada tipo de dado
- * Buscando maneiras de evitar esse trabalho extra
- */
-
-typedef int TIPO;
-
 typedef struct c Celula;
 typedef struct p Pilha;
 
@@ -21,7 +13,7 @@ typedef struct p Pilha;
  * a próxima celula
  */
 struct c{
-    TIPO dado;
+    int dado;
     Celula *prox;
 };
 
@@ -49,12 +41,12 @@ int tamanho_pilha(Pilha p);
 /*
  * Adiciona um novo elemento ao topo da Pilha
  */
-bool empilhar(Pilha *p, TIPO dado);
+bool empilhar(Pilha *p, int dado);
 
 /*
  * Remove um novo elemento do topo da Pilha
  */
-TIPO desempilhar(Pilha *p);
+int desempilhar(Pilha *p);
 
 /*
  * Deleta a Pilha

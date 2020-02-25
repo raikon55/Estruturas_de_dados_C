@@ -6,7 +6,7 @@ void inicializar_arvore(ArvBin *arvore)
     arvore->tam = 0;
 }
 
-bool inserir_arvore(ArvBin *arvore, TIPO dado)
+bool inserir_arvore(ArvBin *arvore, int dado)
 {
     Node *temp = (Node*)malloc(sizeof(Node)); // Criar um novo nó
     temp->dado = dado;

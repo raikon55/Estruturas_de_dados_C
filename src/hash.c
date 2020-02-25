@@ -13,16 +13,16 @@ void inicializar_hash(Lista *tabela[], const int mod)
     }
 }
 
-void inserir_hash(Lista *tabela[], TIPO dado, const int mod)
+void inserir_hash(Lista *tabela[], int dado, const int mod)
 {
     int pos = hash(dado, mod);
     inserir_lista(tabela[pos], dado);
 }
 
-TIPO pesquisar_hash(Lista *tabela[], int chave, const int mod)
+int pesquisar_hash(Lista *tabela[], int chave, const int mod)
 {
     int pos = hash(chave, mod);
-    TIPO consulta = pesquisar_lista(tabela[pos], chave);
+    int consulta = pesquisar_lista(tabela[pos], chave);
 
     return consulta;
 }

@@ -31,7 +31,12 @@ Grafo* iniciar_matriz_adjacente(int vertices);
 /*
  * Criar uma aresta entre 2 vértices.
  */
-void criar_aresta_matriz(Grafo *graph, int vert1, int vert2);
+void criar_aresta_matriz(Grafo *graph, int vert1, int vert2, int peso);
+
+/*
+ * Retorna o peso da aresta entre os vértices
+ */
+int obter_aresta(Grafo* grafo, int vert1, int vert2);
 
 /*
  * Remover uma aresta

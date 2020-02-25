@@ -17,7 +17,7 @@ int tamanho_pilha(Pilha p)
     return p.tam;
 }
 
-bool empilhar(Pilha *p, TIPO dado)
+bool empilhar(Pilha *p, int dado)
 {
     Celula *temp = (Celula*)malloc(sizeof(Celula)); // Novo sentinela
     if(temp == NULL) return false;
@@ -31,11 +31,11 @@ bool empilhar(Pilha *p, TIPO dado)
     return true;
 }
 
-TIPO desempilhar(Pilha *p)
+int desempilhar(Pilha *p)
 {
     if(vazia_pilha(p)) return -1;    // Se estiver vazia, retorne
 
-    TIPO dado = p->topo->dado;  // Remove o dado no topo
+    int dado = p->topo->dado;  // Remove o dado no topo
 
     Celula *temp = p->topo;     // Ponteiro para o topo
     p->topo = p->topo->prox;    // Atualiza a proxima celula como topo
