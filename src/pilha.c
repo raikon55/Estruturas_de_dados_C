@@ -34,11 +34,11 @@ int desempilhar(pilha_t *p)
 {
     if(vazia_pilha(p)) return -1;    // Se estiver vazia, retorne
 
-    int dado = p->dado;  // Remove o dado no topo
+    int dado = p->dado;     // Remove o dado no topo
 
-    pilha_t *temp = p;     // Ponteiro para o topo
-    p = p->prox;    // Atualiza a proxima celula como topo
-    free(temp);                 // Libera o antigo topo
+    pilha_t *temp = p;      // Ponteiro para o topo
+    p = p->prox;            // Atualiza a proxima celula como topo
+    free(temp);             // Libera o antigo topo
 
     return dado;
 }

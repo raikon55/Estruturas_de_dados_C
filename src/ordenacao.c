@@ -1,6 +1,6 @@
 #include "ordenacao.h"
 
-void bolha(int* vet, int tamanho)
+void bolha(int vet[], int tamanho)
 {
     int tmp;
 
@@ -17,7 +17,7 @@ void bolha(int* vet, int tamanho)
     }
 }
 
-void insercao(int* vet, int tamanho)
+void insercao(int vet[], int tamanho)
 {
     int i, j, tmp;
 
@@ -31,7 +31,7 @@ void insercao(int* vet, int tamanho)
     }
 }
 
-void quick(int* vet, int esquerda, int direita)
+void quick(int vet[], int esquerda, int direita)
 {
     int i, j, pivo, temp;
 
@@ -67,7 +67,7 @@ void quick(int* vet, int esquerda, int direita)
 
 }
 
-void selecao(int* vet, int tamanho)
+void selecao(int vet[], int tamanho)
 {
    int i, j, min, x;
 
@@ -85,7 +85,7 @@ void selecao(int* vet, int tamanho)
 
 }
 
-void  merge(int* vet, int inicio, int fim)
+void  merge(int vet[], int inicio, int fim)
 {
     if(inicio < fim){
         int meio = (inicio + fim) / 2;
@@ -95,7 +95,7 @@ void  merge(int* vet, int inicio, int fim)
     }
 }
 
-void merging(int* vet, int inicio, int meio, int fim)
+void merging(int vet[], int inicio, int meio, int fim)
 {
     int n1, n2, i, j, k;
     n1 = meio - inicio + 1;
