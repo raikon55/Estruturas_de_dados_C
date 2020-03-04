@@ -4,12 +4,6 @@
 #include "lista.h"
 
 /*
- * Header com a implementação da tabela hash em C
- * Deve ser modificado para cada int de dado
- * Buscando maneiras de evitar esse trabalho extra
- */
-
-/*
  * Função que cria a hash, recebe um número qualquer e um primo
  * para gerar a hash
  */

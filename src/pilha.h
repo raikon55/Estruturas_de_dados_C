@@ -37,7 +37,7 @@ int tamanho_pilha(pilha_t p);
 /*
  * Adiciona um novo elemento ao topo da Pilha
  */
-bool empilhar(pilha_t *p, int dado);
+pilha_t* empilhar(pilha_t *p, int dado);
 
 /*
  * Remove um novo elemento do topo da Pilha

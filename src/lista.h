@@ -5,12 +5,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/*
- * Header com a implementação de uma Lista duplamente encadeada em C
- * Deve ser modificado para cada int de dado
- * Buscando maneiras de evitar esse trabalho extra
- */
-
 typedef struct cd Dupla;
 typedef struct l Lista;
 
