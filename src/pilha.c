@@ -3,7 +3,7 @@
 void inicializar_pilha(pilha_t *p)
 {
     p->tam = 0;
-    p->prox = NULL;
+    p->topo = NULL;
 }
 
 bool vazia_pilha(pilha_t *p) { return (p->tam == 0); }
@@ -12,24 +12,23 @@ int tamanho_pilha(pilha_t p) { return p.tam; }
 
 pilha_t* empilhar(pilha_t *p, int dado)
 {
-    pilha_t *temp = (pilha_t*) malloc(sizeof(pilha_t));
-    if(temp == NULL) return false;
+    celula_t* nova = (celula_t*) malloc(sizeof(celula_t));
+    nova->dado = dado;
 
-    temp->dado = dado;
-    temp->tam = p->tam+1;
-    temp->prox = p;
+    nova->prox = p->topo;
+    p->topo = nova;
+    p->tam++;
 
-    return temp;
+    return p;
 }
 
 int desempilhar(pilha_t *p)
 {
     if(vazia_pilha(p)) return -1;
 
-    int dado = p->dado;
-
-    pilha_t *temp = p;
-    p = p->prox;
+    celula_t* temp = p->topo;
+    int dado = temp->dado;
+    p->topo = temp->prox;
     free(temp);
 
     return dado;

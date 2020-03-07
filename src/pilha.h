@@ -6,16 +6,20 @@
 #include <stdbool.h>
 #include <string.h>
 
-typedef struct p pilha_t;
-
+typedef struct pilha pilha_t;
+typedef struct celula celula_t;
 /*
  * Celula simples, com ligação apenas para
  * a próxima celula
  */
-struct p{
+struct celula {
     int dado;
+    celula_t* prox;
+};
+
+struct pilha{
     unsigned short tam;
-    pilha_t* prox;
+    celula_t* topo;
 };
 
 /*

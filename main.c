@@ -43,21 +43,17 @@ void exemplo_pilha(void)
     printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(*exemplo));
 
     // Inserir dados na pilha
-    exemplo = empilhar(exemplo, 0);
-    exemplo = empilhar(exemplo, 1);
-    exemplo = empilhar(exemplo, 2);
-    exemplo = empilhar(exemplo, 3);
+    empilhar(exemplo, 0);
+    empilhar(exemplo, 1);
+    empilhar(exemplo, 2);
+    empilhar(exemplo, 3);
 
     // Checar se está vazia e o tamanho
     vazia = vazia_pilha(exemplo);
     printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(*exemplo));
 
     // Mostrar os dados e limpar a pilha
-    printf("Removido %i\n", desempilhar(exemplo));
-    printf("Removido %i\n", desempilhar(exemplo));
-    printf("Removido %i\n", desempilhar(exemplo));
-    printf("Removido %i\n", desempilhar(exemplo));
-//    while(tamanho_pilha(*exemplo) != 0) printf("Removido %i\n", desempilhar(exemplo));
+    while(tamanho_pilha(*exemplo) != 0) printf("Removido %i\n", desempilhar(exemplo));
     limpar_pilha(exemplo);
 }
 
