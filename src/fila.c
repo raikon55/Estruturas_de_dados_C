@@ -1,27 +1,27 @@
 #include "fila.h"
 
-void inicializar_fila(Fila *f)
+void inicializar_fila(fila_t *f)
 {
-    f->inicio = (Celula*)malloc( sizeof(Celula) );
+    f->inicio = (celula_t*)malloc( sizeof(celula_t) );
     f->inicio->prox = NULL;
     f->fim = f->inicio;
     f->tam = 0;
 }
 
-bool vazia_fila(Fila *f)
+bool vazia_fila(fila_t *f)
 {
     if(f->inicio == f->fim) return true;
     else return false;
 }
 
-int tamanho_fila(Fila f)
+int tamanho_fila(fila_t f)
 {
     return f.tam;
 }
 
-bool enfileirar(Fila *f, int dado)
+bool enfileirar(fila_t *f, int dado)
 {
-    f->fim->prox = (Celula*) malloc(sizeof(Celula));
+    f->fim->prox = (celula_t*) malloc(sizeof(celula_t));
 
     f->fim = f->fim->prox;
     f->fim->dado = dado;
@@ -31,11 +31,11 @@ bool enfileirar(Fila *f, int dado)
     return true;
 }
 
-int desenfileirar(Fila *f)
+int desenfileirar(fila_t *f)
 {
     if (vazia_fila(f)) return 0;
 
-    Celula *temp = f->inicio;
+    celula_t *temp = f->inicio;
     f->inicio = f->inicio->prox;
 
     int dado = temp->dado;
@@ -45,7 +45,7 @@ int desenfileirar(Fila *f)
     return dado;
 }
 
-void limpar_fila(Fila *f)
+void limpar_fila(fila_t *f)
 {
     while(!vazia_fila(f)) desenfileirar(f);
 

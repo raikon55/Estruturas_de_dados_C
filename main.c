@@ -1,36 +1,34 @@
-//#include "src/fila.h"
 #include "src/pilha.h"
-//#include "src/search.h"
+//#include "src/fila.h"
+//#include "src/busca.h"
 //#include "src/lista_adjacente.h"
 
-/*
-void exemplo_fila(void)
-{
-    // Declarar a fila e inicializar
-    fila exemplo;
-    inicializar_fila(&exemplo);
+//void exemplo_fila(void)
+//{
+//    // Declarar a fila e inicializar
+//    fila_t exemplo;
+//    inicializar_fila(&exemplo);
 
-    // Checar se está vazia e o tamanho
-    bool vazia = vazia_fila(&exemplo);
-    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_fila(exemplo));
+//    // Checar se está vazia e o tamanho
+//    bool vazia = vazia_fila(&exemplo);
+//    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_fila(exemplo));
 
-    // Inserir dados na fila
-    inserir_fila(&exemplo, 0);
-    inserir_fila(&exemplo, 1);
-    inserir_fila(&exemplo, 2);
-    inserir_fila(&exemplo, 3);
+//    // Inserir dados na fila
+//    inserir_fila(&exemplo, 0);
+//    inserir_fila(&exemplo, 1);
+//    inserir_fila(&exemplo, 2);
+//    inserir_fila(&exemplo, 3);
 
-    // Checar se os dados foram inseridos corretamente
-    vazia = vazia_fila(&exemplo);
-    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_fila(exemplo));
+//    // Checar se os dados foram inseridos corretamente
+//    vazia = vazia_fila(&exemplo);
+//    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_fila(exemplo));
 
-    // Mostrar os dados e limpar a fila
-    while(tamanho_fila(exemplo) != 0) { int dado = remover_fila(&exemplo); printf("Removido %i\n", dado); }
-    vazia = vazia_fila(&exemplo);
-    printf("Vazia? %i\n", vazia);
-    limpar_fila(&exemplo);
-}
-*/
+//    // Mostrar os dados e limpar a fila
+//    while(tamanho_fila(exemplo) != 0) { int dado = remover_fila(&exemplo); printf("Removido %i\n", dado); }
+//    vazia = vazia_fila(&exemplo);
+//    printf("Vazia? %i\n", vazia);
+//    limpar_fila(&exemplo);
+//}
 
 void exemplo_pilha(void)
 {

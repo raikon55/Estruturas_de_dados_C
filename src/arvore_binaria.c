@@ -1,14 +1,14 @@
 #include "arvore_binaria.h"
 
-void inicializar_arvore(ArvBin *arvore)
+void inicializar_arvore(arv_bin_t *arvore)
 {
     arvore->raiz = NULL;
     arvore->tam = 0;
 }
 
-bool inserir_arvore(ArvBin *arvore, int dado)
+bool inserir_arvore(arv_bin_t *arvore, int dado)
 {
-    Node *temp = (Node*)malloc(sizeof(Node)); // Criar um novo nó
+    node_t *temp = (node_t*)malloc(sizeof(node_t));
     temp->dado = dado;
     temp->pai = temp->esq = temp->dir = NULL;
 
@@ -17,7 +17,7 @@ bool inserir_arvore(ArvBin *arvore, int dado)
         arvore->raiz = temp;
         arvore->tam++;
     } else {
-        Node *raiz = arvore->raiz;
+        node_t *raiz = arvore->raiz;
 
         while (raiz!=NULL) {
 
@@ -51,7 +51,7 @@ bool inserir_arvore(ArvBin *arvore, int dado)
     return true;
 }
 
-void in_ord(Node *node)
+void in_ord(node_t *node)
 {
     if(node != NULL){
         printf("%i ", node->dado);
@@ -60,7 +60,7 @@ void in_ord(Node *node)
     }
 }
 
-void pre_ord(Node *node)
+void pre_ord(node_t *node)
 {
     if(node != NULL){
         pre_ord(node->esq);
@@ -69,7 +69,7 @@ void pre_ord(Node *node)
     }
 }
 
-void pos_ord(Node *node)
+void pos_ord(node_t *node)
 {
     if(node != NULL){
         pos_ord(node->dir);
@@ -79,9 +79,9 @@ void pos_ord(Node *node)
     }
 }
 
-int pesquisar_arvore(ArvBin *arvore, int chave)
+int pesquisar_arvore(arv_bin_t *arvore, int chave)
 {
-    Node *temp = arvore->raiz;
+    node_t *temp = arvore->raiz;
     while(temp!=NULL){
 
         if(temp->dado == chave){
@@ -94,7 +94,7 @@ int pesquisar_arvore(ArvBin *arvore, int chave)
     return -1;
 }
 
-int antecessor_Node(Node *node)
+int antecessor_Node(node_t *node)
 {
 
     if(node->dir == NULL) return node->dado;
@@ -102,9 +102,9 @@ int antecessor_Node(Node *node)
     return antecessor_Node(node->dir);
 }
 
-bool remover_arvore(ArvBin *arvore, int chave)
+bool remover_arvore(arv_bin_t *arvore, int chave)
 {
-    Node *temp = arvore->raiz;
+    node_t *temp = arvore->raiz;
 
     // LOCALIZA O ELEMENTO A SER EXCLUIDO
     while(temp != NULL){
@@ -122,7 +122,7 @@ bool remover_arvore(ArvBin *arvore, int chave)
 
         // CASO 1 - REMOVER FOLHA
         if(temp->esq == NULL && temp->dir == NULL){
-            Node *pai = temp->pai;
+            node_t *pai = temp->pai;
 
             if(pai == NULL)
                 arvore->raiz = NULL;
@@ -139,7 +139,7 @@ bool remover_arvore(ArvBin *arvore, int chave)
         // CASO 2 - REMOVER Node COM UM FILHO
         if(temp->esq == NULL || temp->dir == NULL){
 
-            Node* pai = temp->pai;
+            node_t* pai = temp->pai;
 
             if(temp->esq!=NULL){
                 if(pai == NULL){

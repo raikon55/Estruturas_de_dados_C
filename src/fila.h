@@ -5,26 +5,20 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/*
- * Header com a implementação de uma Fila em C
- * Deve ser modificado para cada int de dado
- * Buscando maneiras de evitar esse trabalho extra
- */
-
-typedef struct c Celula;
-typedef struct f Fila;
+typedef struct celula celula_t;
+typedef struct fila fila_t;
 
 /*
  * Celula simples, com ligação apenas para
  * a próxima celula
  */
-struct c{
+struct celula{
     int dado;
-    Celula *prox;
+    celula_t* prox;
 };
 
-struct f{
-    Celula *inicio, *fim;
+struct fila{
+    celula_t *inicio, *fim;
     int tam;
 };
 
@@ -32,31 +26,31 @@ struct f{
  * Inicializar a Fila com o inicio e fim NULL e
  * tamanho da Fila como zero
  */
-void inicializar_fila(Fila *f);
+void inicializar_fila(fila_t* f);
 
 /*
  * Verifica se a Fila está vazia
  */
-bool vazia_fila(Fila *f);
+bool vazia_fila(fila_t* f);
 
 /*
  * Retorna o tamanho da Fila
  */
-int tamanho_fila(Fila f);
+int tamanho_fila(fila_t f);
 
 /*
  * Adiciona um novo elemento ao fim da Fila
  */
-bool enfileirar(Fila *f, int dado);
+bool enfileirar(fila_t* f, int dado);
 
 /*
  * Remove um elemento do fim da Fila
  */
-int desenfileirar(Fila *f);
+int desenfileirar(fila_t* f);
 
 /*
  * Deleta a Fila
  */
-void limpar_fila(Fila *f);
+void limpar_fila(fila_t* f);
 
 #endif //FILA_H_INCLUDED

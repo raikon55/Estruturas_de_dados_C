@@ -1,29 +1,26 @@
 #include "lista.h"
 
-void inicializar_lista(Lista *l)
+void inicializar_lista(lista_t* l)
 {
-    l->inicio = (Dupla*)malloc(sizeof(Dupla));
+    l->inicio = (dupla_t*)malloc(sizeof(dupla_t));
 
-    l->fim = l->inicio;                // Inicio e fim apontam para o mesmo lugar
-    l->inicio->prox = l->inicio->ant = NULL; // Prox e ant vazias
+    l->fim = l->inicio;
+    l->inicio->prox = l->inicio->ant = NULL;
 
     l->tam = 0;
 }
 
-bool vazia_lista(Lista *l)
+bool vazia_lista(lista_t* l)
 {
     if(l->inicio == l->fim) return true;
     else return false;
 }
 
-int tamanho_lista(Lista l)
-{
-    return l.tam;
-}
+int tamanho_lista(lista_t l) { return l.tam; }
 
-bool inserir_lista(Lista *l, int dado)
+bool inserir_lista(lista_t* l, int dado)
 {
-    Dupla *nova = (Dupla*)malloc( sizeof(Dupla) );
+    dupla_t *nova = (dupla_t*)malloc( sizeof(dupla_t) );
     if(nova == NULL) return false;
 
     nova->dado = dado;
@@ -38,25 +35,25 @@ bool inserir_lista(Lista *l, int dado)
     return true;
 }
 
-bool remover_lista(Lista *l, int pos)
+bool remover_lista(lista_t* l, int pos)
 {
     if( (pos < 1) || (pos > l->tam) || (vazia_lista(l)) )
         return false;
 
-    Dupla *removida = l->inicio;
+    dupla_t *removida = l->inicio;
 
-    if(pos == 1){   // Caso seja a primeira posição
+    if(pos == 1){
         l->inicio = l->inicio->prox;
 
         if(l->inicio->prox == NULL) l->fim->prox = NULL;
         else l->inicio->ant = NULL;
 
-    }else if(pos == l->tam){    // Caso seja a última posição
+    }else if(pos == l->tam){
         removida = l->fim;
         l->fim->ant->prox = NULL;
         l->fim = l->fim->ant;
     }else{
-        Dupla *cel_ant = l->inicio->prox;
+        dupla_t *cel_ant = l->inicio->prox;
 
         for(int c = 0; c < pos-1; c++) cel_ant = cel_ant->prox;
 
@@ -71,9 +68,9 @@ bool remover_lista(Lista *l, int pos)
     return true;
 }
 
-int pesquisar_lista(Lista *l, int chave)
+int pesquisar_lista(lista_t* l, int chave)
 {
-    Dupla *temp = l->inicio;
+    dupla_t *temp = l->inicio;
 
     while(!vazia_lista(l) && temp != NULL && chave != temp->dado) temp = temp->prox;
 
@@ -81,7 +78,7 @@ int pesquisar_lista(Lista *l, int chave)
     else return -1;
 }
 
-void limpar_lista(Lista *l)
+void limpar_lista(lista_t* l)
 {
     while(!vazia_lista(l)) remover_lista(l, tamanho_lista(*l));
 
