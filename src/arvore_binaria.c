@@ -1,12 +1,12 @@
 #include "arvore_binaria.h"
 
-void inicializar_arvore(arv_bin_t *arvore)
+void inicializar_arvore(arv_bin_t* arvore)
 {
     arvore->raiz = NULL;
     arvore->tam = 0;
 }
 
-bool inserir_arvore(arv_bin_t *arvore, int dado)
+bool inserir_arvore(arv_bin_t* arvore, int dado)
 {
     node_t *temp = (node_t*)malloc(sizeof(node_t));
     temp->dado = dado;
@@ -51,7 +51,7 @@ bool inserir_arvore(arv_bin_t *arvore, int dado)
     return true;
 }
 
-void in_ord(node_t *node)
+void in_ord(node_t* node)
 {
     if(node != NULL){
         printf("%i ", node->dado);
@@ -60,7 +60,7 @@ void in_ord(node_t *node)
     }
 }
 
-void pre_ord(node_t *node)
+void pre_ord(node_t* node)
 {
     if(node != NULL){
         pre_ord(node->esq);
@@ -69,7 +69,7 @@ void pre_ord(node_t *node)
     }
 }
 
-void pos_ord(node_t *node)
+void pos_ord(node_t* node)
 {
     if(node != NULL){
         pos_ord(node->dir);
@@ -79,7 +79,7 @@ void pos_ord(node_t *node)
     }
 }
 
-int pesquisar_arvore(arv_bin_t *arvore, int chave)
+int pesquisar_arvore(arv_bin_t* arvore, int chave)
 {
     node_t *temp = arvore->raiz;
     while(temp!=NULL){
@@ -94,7 +94,7 @@ int pesquisar_arvore(arv_bin_t *arvore, int chave)
     return -1;
 }
 
-int antecessor_Node(node_t *node)
+int antecessor_Node(node_t* node)
 {
 
     if(node->dir == NULL) return node->dado;
@@ -102,7 +102,7 @@ int antecessor_Node(node_t *node)
     return antecessor_Node(node->dir);
 }
 
-bool remover_arvore(arv_bin_t *arvore, int chave)
+bool remover_arvore(arv_bin_t* arvore, int chave)
 {
     node_t *temp = arvore->raiz;
 

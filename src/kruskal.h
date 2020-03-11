@@ -4,27 +4,28 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct edge Aresta;
-typedef struct c Celula;
+typedef struct aresta aresta_t;
+typedef struct celula celula_t;
+typedef struct grafo grafo_t;
 
-struct edge{
+struct aresta {
     int vertice_in;
     int vertice_out;
     int peso;
-    Aresta* prox;
+    aresta_t* prox;
 };
 
-struct c {
-    Aresta aresta;
+struct celula {
+    aresta_t aresta;
     int nivel;
-    Celula* prox;
+    celula_t* prox;
 };
 
-typedef struct {
+struct grafo{
     int num_arestas;
     int num_vertices;
-    Aresta* arestas;
-}Grafo;
+    aresta_t* arestas;
+};
 
 /**
  * Determina a qual conjunto um determinado elemento pertence.
@@ -40,12 +41,12 @@ void unir(int subconj[], int x, int y);
 /**
  * Ordenar as arestas em ordem não-decrescente.
  */
-void ordenar(Aresta aresta[], int tot_aresta);
+void ordenar(aresta_t aresta[], int tot_aresta);
 
 /**
  * Dado um conjunto ordenado de arestas, retorna uma árvore
  * geradora minima.
  */
-void kruskal(Grafo graph, Aresta* arvore);
+void kruskal(grafo_t graph, aresta_t* arvore);
 
 #endif /* KRUSKAL_H_ */

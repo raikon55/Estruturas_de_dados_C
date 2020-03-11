@@ -23,9 +23,9 @@ int** iniciar_matriz(int dimensao)
     return matriz;
 }
 
-Grafo* iniciar_matriz_adjacente(int vertices)
+grafo_t* iniciar_matriz_adjacente(int vertices)
 {
-    Grafo *graph = (Grafo*) malloc(sizeof(Grafo));
+    grafo_t *graph = (grafo_t*) malloc(sizeof(grafo_t));
 
     graph->vertice = vertices;
     graph->aresta = 0;
@@ -35,12 +35,12 @@ Grafo* iniciar_matriz_adjacente(int vertices)
     else return NULL;
 }
 
-int obter_aresta(Grafo* grafo, int vert1, int vert2)
+int obter_aresta(grafo_t* grafo, int vert1, int vert2)
 {
     return grafo->matriz[vert1][vert2];
 }
 
-void remove_aresta_matriz(Grafo *graph, int vert1, int vert2)
+void remove_aresta_matriz(grafo_t *graph, int vert1, int vert2)
 {
     if (graph->matriz[vert1][vert2] == 1){
         graph->matriz[vert1][vert2] = 0;
@@ -51,7 +51,7 @@ void remove_aresta_matriz(Grafo *graph, int vert1, int vert2)
     }
 }
 
-void finalizar_matriz_adjacente(Grafo *graph)
+void finalizar_matriz_adjacente(grafo_t *graph)
 {
     for (int i = 0; i < graph->vertice; i++)
         free(graph->matriz[i]);

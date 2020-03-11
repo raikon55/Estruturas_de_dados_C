@@ -4,37 +4,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct g Grafo;
-typedef struct edge Aresta;
+typedef struct grafo grafo_t;
+typedef struct aresta aresta_t;
 
-struct g{
+struct grafo {
     int num_vertice;
     int num_aresta;
-    Aresta **vert;
+    aresta_t **vert;
 };
 
-struct edge {
+struct aresta {
     int peso;
     int dado;
-    Aresta* prox;
+    aresta_t* prox;
 };
 
 /**
  * Inicia o gráfo com o número de vértices
  * já definido
  */
-void inicializar_grafo(Grafo* graph, int total_vert);
+void inicializar_grafo(grafo_t* graph, int total_vert);
 
 /**
  * Criar uma aresta entre dois vértices
  */
-void criar_aresta(Grafo* graph, int vert_out, int vert_in, unsigned int peso);
+void criar_aresta(grafo_t* graph, int vert_out, int vert_in, unsigned int peso);
 
-void adicionar_aresta(Aresta* vert_in, int vert_out, unsigned int peso);
+void adicionar_aresta(aresta_t* vert_in, int vert_out, unsigned int peso);
 
 /**
  * Finaliza o grafo
  */
-void finalizar_grafo(Grafo* graph);
+void finalizar_grafo(grafo_t* graph);
 
 #endif /* LISTA_ADJCENCIA_H_ */

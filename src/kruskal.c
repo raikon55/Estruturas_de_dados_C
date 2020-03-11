@@ -13,12 +13,12 @@ void unir(int subconj[], int v1, int v2)
     subconj[v1_conj] = v2_conj;
 }
 
-void ordenar(Aresta aresta[], int tot_aresta)
+void ordenar(aresta_t aresta[], int tot_aresta)
 {
     for (int i = 0; i < tot_aresta; i++){
         for (int j = i+1; j < tot_aresta; j++){
             if (aresta[j].peso < aresta[i].peso){
-                Aresta temp = aresta[i];
+                aresta_t temp = aresta[i];
                 aresta[i] = aresta[j];
                 aresta[j] = temp;
             }
@@ -26,7 +26,7 @@ void ordenar(Aresta aresta[], int tot_aresta)
     }
 }
 
-void kruskal(Grafo graph, Aresta* arvore)
+void kruskal(grafo_t graph, aresta_t* arvore)
 {
     int tot_vertices = graph.num_vertices,
         tot_arestas = graph.num_arestas,
@@ -35,7 +35,7 @@ void kruskal(Grafo graph, Aresta* arvore)
 
     memset(subset, -1, sizeof(int) * tot_vertices);
 
-    Aresta* aresta = (Aresta*) calloc(tot_arestas, sizeof(Aresta)),
+    aresta_t* aresta = (aresta_t*) calloc(tot_arestas, sizeof(aresta_t)),
           * temp = graph.arestas;
 
     while ( temp != NULL ){

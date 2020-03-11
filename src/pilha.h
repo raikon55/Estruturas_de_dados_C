@@ -17,7 +17,7 @@ struct celula {
     celula_t* prox;
 };
 
-struct pilha{
+struct pilha {
     unsigned short tam;
     celula_t* topo;
 };
@@ -26,12 +26,12 @@ struct pilha{
  * Inicializar a Pilha com o topo NULL e
  * tamanho da Pilha como zero
  */
-void inicializar_pilha(pilha_t *p);
+void inicializar_pilha(pilha_t* p);
 
 /*
  * Verifica se a Pilha está vazia
  */
-bool vazia_pilha(pilha_t *p);
+bool vazia_pilha(pilha_t* p);
 
 /*
  * Retorna o tamanho da Pilha
@@ -41,16 +41,16 @@ int tamanho_pilha(pilha_t p);
 /*
  * Adiciona um novo elemento ao topo da Pilha
  */
-pilha_t* empilhar(pilha_t *p, int dado);
+pilha_t* empilhar(pilha_t* p, int dado);
 
 /*
  * Remove um novo elemento do topo da Pilha
  */
-int desempilhar(pilha_t *p);
+int desempilhar(pilha_t* p);
 
 /*
  * Deleta a Pilha
  */
-void limpar_pilha(pilha_t *p);
+void limpar_pilha(pilha_t* p);
 
 #endif // PILHA_H_INCLUDED

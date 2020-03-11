@@ -1,7 +1,7 @@
-#include "src/pilha.h"
+//#include "src/pilha.h"
 //#include "src/fila.h"
 //#include "src/busca.h"
-//#include "src/lista_adjacente.h"
+#include "src/lista_adjacente.h"
 
 //void exemplo_fila(void)
 //{
@@ -30,30 +30,30 @@
 //    limpar_fila(&exemplo);
 //}
 
-void exemplo_pilha(void)
-{
-    // Declarar e inicializar pilha
-    pilha_t* exemplo = (pilha_t*) malloc(sizeof(pilha_t));
-    inicializar_pilha(exemplo);
+//void exemplo_pilha(void)
+//{
+//    // Declarar e inicializar pilha
+//    pilha_t* exemplo = (pilha_t*) malloc(sizeof(pilha_t));
+//    inicializar_pilha(exemplo);
 
-    // Checar se está vazia e o tamanho
-    bool vazia = vazia_pilha(exemplo);
-    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(*exemplo));
+//    // Checar se está vazia e o tamanho
+//    bool vazia = vazia_pilha(exemplo);
+//    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(*exemplo));
 
-    // Inserir dados na pilha
-    empilhar(exemplo, 0);
-    empilhar(exemplo, 1);
-    empilhar(exemplo, 2);
-    empilhar(exemplo, 3);
+//    // Inserir dados na pilha
+//    empilhar(exemplo, 0);
+//    empilhar(exemplo, 1);
+//    empilhar(exemplo, 2);
+//    empilhar(exemplo, 3);
 
-    // Checar se está vazia e o tamanho
-    vazia = vazia_pilha(exemplo);
-    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(*exemplo));
+//    // Checar se está vazia e o tamanho
+//    vazia = vazia_pilha(exemplo);
+//    printf("Vazia? %i\nTamanho -> %i\n", vazia, tamanho_pilha(*exemplo));
 
-    // Mostrar os dados e limpar a pilha
-    while(tamanho_pilha(*exemplo) != 0) printf("Removido %i\n", desempilhar(exemplo));
-    limpar_pilha(exemplo);
-}
+//    // Mostrar os dados e limpar a pilha
+//    while(tamanho_pilha(*exemplo) != 0) printf("Removido %i\n", desempilhar(exemplo));
+//    limpar_pilha(exemplo);
+//}
 
 /*
 void exemplo_pesquisa(void)
@@ -105,30 +105,28 @@ void exemplo_hash(void)
 }
 */
 
-/*
 void exemplo_lista_adjacente(void)
 {
-    Grafo *graph = NULL;
+    grafo_t *graph = NULL;
 
-    graph = iniciar_grafo(7);
-    criar_aresta(graph, 1, 3);
-    criar_aresta(graph, 3, 1);
-    criar_aresta(graph, 2, 3);
-    criar_aresta(graph, 6, 4);
-    criar_aresta(graph, 6, 3);
-    criar_aresta(graph, 6, 2);
-    criar_aresta(graph, 6, 1);
+    inicializar_grafo(graph, 7);
+    criar_aresta(graph, 1, 3, 0);
+    criar_aresta(graph, 3, 1, 0);
+    criar_aresta(graph, 2, 3, 0);
+    criar_aresta(graph, 6, 4, 0);
+    criar_aresta(graph, 6, 3, 0);
+    criar_aresta(graph, 6, 2, 0);
+    criar_aresta(graph, 6, 1, 0);
 
-    show(graph);
+    //show(graph);
 }
-*/
 
 int main(void)
 {
-    //exemplo_lista_adjacente();
+    exemplo_lista_adjacente();
     //exemplo_hash();
     //exemplo_fila();
-    exemplo_pilha();
+    //exemplo_pilha();
     //exemplo_pesquisa();
     //exemplo_lista();
     return 0;

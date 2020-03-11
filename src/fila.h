@@ -12,12 +12,12 @@ typedef struct fila fila_t;
  * Celula simples, com ligação apenas para
  * a próxima celula
  */
-struct celula{
+struct celula {
     int dado;
     celula_t* prox;
 };
 
-struct fila{
+struct fila {
     celula_t *inicio, *fim;
     int tam;
 };

@@ -1,15 +1,15 @@
 #include "lista_adjacente.h"
 
-void inicializar_grafo(Grafo* graph, int total_vert)
+void inicializar_grafo(grafo_t* graph, int total_vert)
 {
-    graph->vert = (Aresta**) calloc(total_vert, sizeof(Aresta*));
+    graph->vert = (aresta_t**) calloc(total_vert, sizeof(aresta_t*));
     if ( graph->vert == NULL || graph == NULL){
         puts("Erro na alocação");
         exit(1);
     }
 
     for ( int i = 0; i < total_vert; i++){
-        graph->vert[i] = (Aresta*) malloc(sizeof(Aresta));
+        graph->vert[i] = (aresta_t*) malloc(sizeof(aresta_t));
         graph->vert[i]->prox = NULL;
     }
 
@@ -17,9 +17,9 @@ void inicializar_grafo(Grafo* graph, int total_vert)
     graph->num_aresta = 0;
 }
 
-void criar_aresta(Grafo* graph, int vert_out, int vert_in, unsigned int peso)
+void criar_aresta(grafo_t* graph, int vert_out, int vert_in, unsigned int peso)
 {
-    Aresta* temp_out = graph->vert[vert_in]->prox,
+    aresta_t* temp_out = graph->vert[vert_in]->prox,
          * temp_in = graph->vert[vert_out]->prox;
 
     while ( temp_out != NULL ){
@@ -38,9 +38,9 @@ void criar_aresta(Grafo* graph, int vert_out, int vert_in, unsigned int peso)
     graph->num_aresta++;
 }
 
-void adicionar_aresta(Aresta* vert_in, int vert_out, unsigned int peso)
+void adicionar_aresta(aresta_t* vert_in, int vert_out, unsigned int peso)
 {
-    Aresta* temp = vert_in->prox;
+    aresta_t* temp = vert_in->prox;
 
     while (temp->prox != NULL) temp = temp->prox;
 
@@ -49,16 +49,16 @@ void adicionar_aresta(Aresta* vert_in, int vert_out, unsigned int peso)
     temp->prox = NULL;
 }
 
-void finalizar_aresta(Aresta* arestas)
+void finalizar_aresta(aresta_t* arestas)
 {
     while (arestas->prox != NULL) {
-        Aresta* temp = arestas->prox;
+        aresta_t* temp = arestas->prox;
         arestas = arestas->prox;
         free(temp);
     }
 }
 
-void finalizar_grafo(Grafo* graph)
+void finalizar_grafo(grafo_t* graph)
 {
     for (int i = 0; i < graph->num_vertice; i++){
         finalizar_aresta(graph->vert[i]);

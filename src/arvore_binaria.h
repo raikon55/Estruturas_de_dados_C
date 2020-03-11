@@ -8,12 +8,12 @@
 typedef struct node node_t;
 typedef struct btree arv_bin_t;
 
-struct node{
+struct node {
     int dado;
     node_t *pai, *esq, *dir;
 };
 
-struct btree{
+struct btree {
     node_t *raiz;
     int tam;
 };
